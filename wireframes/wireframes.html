@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Clone Airbnb — Wireframes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#222;--muted:#6c6c6c;--line:#ddd;--fill:#ebebeb;--soft:#f2f2f2}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{font-family:'Roboto',Arial,sans-serif;color:var(--ink);font-size:14px;line-height:1.35;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.screen{width:1440px;background:#fff;position:relative;overflow:hidden;break-after:page}
+.cap{background:var(--ink);color:#fff;padding:14px 48px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:500}
+.cap span{font-weight:400;opacity:.7;font-size:13px}
+.img{background:var(--fill) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Crect x='3' y='4' width='18' height='16' rx='2' stroke='%238C8C8C' stroke-width='1.5'/%3E%3Ccircle cx='9' cy='10' r='2' stroke='%238C8C8C' stroke-width='1.5'/%3E%3Cpath d='M3 17l5-5 4 4 3-3 6 6' stroke='%238C8C8C' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") center/24px no-repeat;border-radius:12px}
+.row{display:flex;align-items:center}.col{display:flex;flex-direction:column}.between{justify-content:space-between}
+.g4{gap:4px}.g8{gap:8px}.g12{gap:12px}.g16{gap:16px}.g24{gap:24px}.g32{gap:32px}
+.m{font-weight:500}.b{font-weight:700}.mu{color:var(--muted)}.u{text-decoration:underline}.c{text-align:center}
+.s12{font-size:12px}.s16{font-size:16px}.s18{font-size:18px}
+h2{font-size:22px;font-weight:500}
+.hr{height:1px;background:var(--line);width:100%;flex:none}
+.circle{width:40px;height:40px;border-radius:50%;background:var(--soft);flex:none;display:inline-flex;align-items:center;justify-content:center}
+.mini{width:28px;height:28px;border-radius:50%;background:var(--soft);display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.ico{width:24px;height:24px;border-radius:4px;background:var(--fill);flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 24px;border-radius:8px;font-weight:500;font-size:16px;background:var(--ink);color:#fff;white-space:nowrap}
+.btn.sec{background:var(--soft);color:var(--ink)}.btn.out{background:#fff;color:var(--ink);border:1px solid var(--ink)}.btn.sm{padding:8px 14px;font-size:14px}.btn.full{width:100%}
+.field{border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-height:56px;display:flex;align-items:center;justify-content:space-between;font-size:16px;color:var(--muted)}
+.field small{display:block;font-size:12px}.field .v{color:var(--ink)}
+.group{border:1px solid var(--muted);border-radius:8px;overflow:hidden}
+.group>div{padding:16px 12px;font-size:16px;color:var(--muted);border-bottom:1px solid var(--muted);display:flex;justify-content:space-between;align-items:center}
+.group>div:last-child{border-bottom:0}
+.logo{width:102px;height:32px;border:1px solid var(--line);background:var(--soft);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--muted);flex:none}
+.mark{width:36px;height:36px;border:2px solid var(--ink);border-radius:50%}
+/* headers */
+.hs{padding:24px 48px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.hb{padding:16px 48px 24px;border-bottom:1px solid var(--line)}
+.tab{display:flex;gap:8px;align-items:center;padding:4px 0 12px;color:var(--muted);border-bottom:2px solid transparent}
+.tab i{width:32px;height:32px;border-radius:50%;background:var(--fill)}
+.tab.on{color:var(--ink);font-weight:500;border-color:var(--ink)}
+.pill{width:850px;margin:16px auto 0;border:1px solid var(--line);border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.08);display:flex;align-items:center;gap:24px;padding:8px 8px 8px 32px}
+.seg{flex:1}.seg b{font-size:12px;font-weight:500;display:block}.seg span{color:var(--muted)}
+.vd{width:1px;height:32px;background:var(--line);flex:none}
+.sbtn{width:48px;height:48px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;flex:none}
+/* listing pages */
+.content{padding:32px 48px 56px;display:flex;flex-direction:column;gap:40px}
+.sec-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.sec-h h3{font-size:20px;font-weight:500}
+.sub{margin:-8px 0 12px}
+.cards{display:grid;grid-template-columns:repeat(7,1fr);gap:16px}
+.card .ph{height:170px;position:relative}
+.badge{position:absolute;top:8px;left:8px;background:#fff;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:500}
+.heart{position:absolute;top:8px;right:8px;width:20px;height:20px}
+.card .t{font-size:12px;font-weight:500;margin-top:8px}.card .d{font-size:12px;color:var(--muted)}
+.tile{width:120px}.tile .img{height:120px;background-color:var(--soft)}.tile div:last-child{font-size:12px;font-weight:500;margin-top:8px}
+.big-title{font-size:28px;font-weight:500}
+.insp{background:var(--soft);padding:40px 48px}
+.insp-tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin:20px 0}
+.insp-tabs span{padding-bottom:10px;color:var(--muted)}.insp-tabs span:first-child{color:var(--ink);font-weight:500;border-bottom:2px solid var(--ink)}
+.insp-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px 24px}
+.foot{background:var(--soft);padding:48px 48px 32px}
+.foot-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.foot-cols div{display:flex;flex-direction:column;gap:16px}
+.foot-base{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);margin-top:32px;padding-top:24px}
+.dot{width:20px;height:20px;border-radius:50%;background:var(--line)}
+/* pdp */
+.pdp{width:1120px;margin:0 auto;padding:24px 0 48px;display:flex;flex-direction:column;gap:32px}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:206px 206px;gap:8px;border-radius:12px;overflow:hidden;position:relative}
+.gallery .img{border-radius:0}.gallery .img:first-child{grid-row:span 2}
+.gallery .btn{position:absolute;right:24px;bottom:24px}
+.two{display:flex;gap:80px;align-items:flex-start}
+.two>.left{flex:1;display:flex;flex-direction:column;gap:32px}
+.two>.right{width:372px;flex:none;display:flex;flex-direction:column;gap:16px;align-items:center}
+.box{border:1px solid var(--line);border-radius:12px}
+.shadow{box-shadow:0 6px 16px rgba(0,0,0,.1)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);row-gap:2px}
+.cal div{height:40px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500}
+.cal .p{color:var(--muted);font-weight:400}.cal .w{color:var(--muted)}
+.cats{display:grid;grid-template-columns:repeat(7,1fr)}
+.cats>div{padding:0 16px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.cats>div:first-child{border-left:0;padding-left:0}
+.chip{border:1px solid var(--line);border-radius:999px;padding:8px 16px}
+.bar{height:4px;border-radius:2px;background:var(--fill);width:90px}
+/* modal */
+.overlay{position:absolute;inset:0;background:rgba(34,34,34,.35)}
+.modal{position:absolute;background:#fff;border-radius:24px;overflow:hidden}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const HEART='<svg class="heart" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z" stroke="#222" stroke-width="1.8" fill="#fff"/></svg>';
+const SEARCH='<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#fff" stroke-width="3"/><path d="M16.5 16.5L21 21" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>';
+const CHEV='<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const BACK='<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M11 6l-6 6 6 6" stroke="#222" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const CLOSE='<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg>';
+
+const actions=()=>`<div class="row g12"><span class="m">Torne-se um anfitrião</span><span class="circle"></span><span class="circle"></span></div>`;
+const headerSimples=(a=true)=>`<header class="hs"><div class="logo">LOGO</div>${a?actions():''}</header>`;
+const headerBusca=(active,f1='Buscar destinos',l3='Quem',f3='Hóspedes?')=>`<header class="hb"><div class="row between"><div class="logo">LOGO</div>
+<div class="row g32">${['Tudo','Acomodações','Experiências','Serviços'].map(t=>`<div class="tab ${t===active?'on':''}"><i></i>${t}</div>`).join('')}</div>${actions()}</div>
+<div class="pill"><div class="seg"><b>Onde</b><span>${f1}</span></div><div class="vd"></div><div class="seg"><b>Quando</b><span>Insira as datas</span></div><div class="vd"></div><div class="seg"><b>${l3}</b><span>${f3}</span></div><div class="sbtn">${SEARCH}</div></div></header>`;
+const card=(o={})=>`<div class="card"><div class="img ph">${o.selo===false?'':`<span class="badge">${o.selo||'Preferido dos hóspedes'}</span>`}${HEART}</div><div class="t">${o.t||'Tipo · Cidade'}</div><div class="d">${o.d||'1 – 3 de dez'}</div><div class="d">${o.p||'R$ 0.000 total · ★ 4,9'}</div></div>`;
+const carousel=(title,o={})=>`<section><div class="sec-h"><div class="row g8"><h3>${title}</h3><span class="mini">→</span></div><div class="row g8"><span class="mini">‹</span><span class="mini">›</span></div></div>${o.sub?`<p class="mu sub">${o.sub}</p>`:''}<div class="cards">${Array(7).fill(card(o.card||{})).join('')}</div></section>`;
+const tiles=(title)=>`<section><h3 style="font-size:20px;font-weight:500;margin-bottom:16px">${title}</h3><div class="row g16">${['Aluguel de carros','Fotografia','Chefs','Massagens','Treinos'].map(n=>`<div class="tile"><div class="img"></div><div>${n}</div></div>`).join('')}</div></section>`;
+const IG=[['Bauru','Aluguéis de casas'],['Santarém','Locações por temporada com piscina'],['Uberlândia','Aluguéis de chalés'],['Governador Celso Ramos','Locações por temporada com piscina'],['Cunha','Locações por temporada com piscina'],['Macapá','Aluguéis por temporada'],['Kissimmee','Locações por temporada com piscina'],['Encarnación','Aluguéis de cabanas'],['Paris','Aluguéis de chalés'],['Beto Carrero World','Aluguéis por temporada'],['São Bento do Sapucaí','Aluguéis de chalés'],['Los Angeles','Aluguéis de casas'],['Gramado','Aluguéis de casas'],['Pirenópolis','Aluguéis de apartamentos'],['Ilha de Itaparica','Aluguéis de casas'],['Arraial do Cabo','Aluguéis de casas'],['Águas de Lindóia','Aluguéis por temporada'],['Mostrar mais ⌄','']];
+const inspiracao=()=>`<section class="insp"><h2>Inspiração para viagens futuras</h2><div class="insp-tabs">${['Popular','Litoral','Histórica','Ilhas','Atividades ao ar livre','Coisas para fazer'].map(t=>`<span>${t}</span>`).join('')}</div><div class="insp-grid">${IG.map(([a,b])=>`<div><div class="m">${a}</div><div class="mu">${b}</div></div>`).join('')}</div></section>`;
+const FC={'Atendimento':['Central de Ajuda','Receber ajuda com problema de segurança','AirCover','Antidiscriminação','Apoio à pessoa com deficiência','Opções de cancelamento','Reporte um problema no bairro'],'Hospedagem':['Anuncie seu espaço no Airbnb','Anuncie seu hotel no Airbnb','Anuncie sua experiência no Airbnb','Anuncie seu serviço no Airbnb','AirCover para anfitriões','Recursos para anfitriões','Fórum da comunidade','Hospedagem responsável','Participe de uma aula gratuita sobre hospedagem','Encontre um coanfitrião','Indique um anfitrião'],'Airbnb':['Airbnb 2026 - edição de maio','Newsroom','Carreiras','Investidores','Locais emergenciais Airbnb.org']};
+const rodape=()=>`<footer class="foot"><div class="foot-cols">${Object.entries(FC).map(([h,l])=>`<div><span class="m">${h}</span>${l.map(x=>`<span>${x}</span>`).join('')}</div>`).join('')}</div><div class="foot-base"><span>© 2026 Airbnb, Inc. · Privacidade · Termos · Informações da empresa</span><div class="row g16"><span class="m">Português (BR)</span><span class="m">R$ BRL</span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div></footer>`;
+const cap=(t,src)=>`<div class="cap">${t}<span>${src}</span></div>`;
+const screen=(id,t,src,html,style='')=>`<div class="screen" id="${id}" style="${style}">${cap(t,src)}${html}</div>`;
+
+const STAY={};
+const EXP={t:'Nome da experiência',d:'A partir de R$ 000 /participante',p:'★ 4,9'};
+const SV={t:'Nome do serviço',d:'A partir de R$ 000 /grupo',p:'★ 5,0'};
+const HOTEL={sub:'Além disso, ganhe créditos do Airbnb ao ficar em um hotel em destaque.',card:{t:'Nome do hotel',selo:false}};
+const DEST=[['Orlando','Parques temáticos'],['Destin','Destino de praia'],['Las Vegas','Vida noturna'],['Colorado Springs','Natureza'],['Chicago','Arquitetura'],['Miami','Destino de praia'],['Denver','Montanhas'],['Nova York','Vida urbana'],['Breckenridge','Esqui'],['San Antonio','Cultura']];
+
+// 01 Início
+const s1=headerBusca('Tudo')+`<main class="content">
+${['Acomodações perto da praia · Aquiraz','Acomodações muito procuradas em Nova York','Confira acomodações em Omaha','Fique em Tulsa','Disponível no próximo mês em Colorado Springs','Lugares para ficar em Denver','Fique em Las Vegas','Acomodações em Chicago','Disponível no próximo mês em Destin','Acomodações muito procuradas em Orlando'].map(t=>carousel(t)).join('')}
+${carousel('Ótimos hotéis para sua próxima viagem',HOTEL)}${carousel('Disponível no próximo mês em Miami')}
+${tiles('Encontre serviços perto de você')}
+<section><h3 style="font-size:20px;font-weight:500;margin-bottom:16px">Destinos para você</h3><div style="display:grid;grid-template-columns:repeat(10,1fr);gap:16px">${DEST.map(([a,b])=>`<div><div class="img" style="height:120px"></div><div class="m" style="font-size:13px;margin-top:6px">${a}</div><div class="mu s12">${b}</div></div>`).join('')}</div></section>
+${carousel('Capture momentos inesquecíveis perto de você',{card:{...SV,selo:false}})}
+</main>`+inspiracao()+rodape();
+
+// 02 Acomodações
+const s2=headerBusca('Acomodações')+`<main class="content">${['Acomodações em Las Vegas','Acomodações perto da praia · Arraial do Cabo','Acomodações muito procuradas em Orlando'].map(t=>carousel(t)).join('')}${carousel('Chicago: ótimos hotéis',HOTEL)}${['Disponível no próximo mês em Destin','Fique em Chicago','Disponível no próximo mês em Denver','Disponível no próximo mês em Colorado Springs','Lugares para ficar em Miami','Confira acomodações em Nova York','Acomodações muito procuradas em Omaha','Fique em San Juan'].map(t=>carousel(t)).join('')}</main>`+inspiracao()+rodape();
+
+// 03 Experiências
+const s3=headerBusca('Experiências','Cidade ou ponto de referência')+`<main class="content">
+${carousel('Originais Airbnb',{sub:'Oferecidos pelas pessoas mais interessantes do mundo',card:{...EXP,selo:'Original'}})}
+<div class="big-title">Popular entre viajantes da sua região</div>
+${carousel('Experiências em Kansas City',{card:{...EXP,selo:false}})}${carousel('Experiências em Chicago',{card:{...EXP,selo:'Em alta'}})}${carousel('Experiências em Denver',{card:{...EXP,selo:'Em alta'}})}${carousel('Experiências em Estes Park',{card:{...EXP,selo:false}})}${carousel('Experiências em Branson',{card:{...EXP,selo:'Em alta'}})}
+</main>`+inspiracao()+rodape();
+
+// 04 Serviços
+const s4=headerBusca('Serviços','Buscar destinos','Tipo de serviço','Adicionar serviço')+`<main class="content">
+${tiles('Serviços em Omaha')}${carousel('Fotografia',{card:{...SV,selo:false}})}
+<div class="big-title">Descubra serviços no Airbnb</div>
+${carousel('Serviços em Kansas City',{card:{...SV,selo:false}})}${carousel('Serviços em Chicago',{card:{...SV,selo:'Popular'}})}${carousel('Serviços em Denver',{card:{...SV,selo:'Popular'}})}
+</main>`+inspiracao()+rodape();
+
+// 05 Anúncio
+const month=(name,offset,days,past)=>{let h=`<div style="flex:1"><div class="m c s16" style="margin-bottom:8px">${name}</div><div class="cal">${['D','S','T','Q','Q','S','S'].map(d=>`<div class="w">${d}</div>`).join('')}`;
+ for(let i=0;i<offset;i++) h+='<div></div>'; for(let d=1;d<=days;d++) h+=`<div class="${d<=past?'p':''}">${d}</div>`; return h+'</div></div>';};
+const REV=[['Miriam','10 meses no Airbnb','1 semana atrás','Próximo ao centro, amei tudo organizado.'],['Rafaela Santos','7 meses no Airbnb','1 semana atrás','Muito aconchegante, bem localizado, tudo muito arrumado e limpo e muito confortável.'],['Rubem','4 anos no Airbnb','outubro de 2026','Nossa experiência foi maravilhosa! O apartamento é exatamente como nas fotos, super aconchegante, limpo, organizado e muito bem equipado.'],['Gabriela','3 anos no Airbnb','setembro de 2026','Lugar incrível, exatamente igual às fotos. Assim que chegamos notamos que estava tudo extremamente limpo, organizado e muito cheiroso.'],['Bruly','6 anos no Airbnb','setembro de 2026','Uma das melhores hospedagens da minha vida, do ladinho da praia de Porto de Galinhas.'],['Sandra','8 anos no Airbnb','agosto de 2026','O local era extremamente bem localizado, com um restaurante ao lado e perto da feira de artesanato, lojas, comércios e bares.']];
+const AMS=['Cozinha','Wi-Fi','Estacionamento gratuito no local','Piscina','TV','Elevador','Ar-condicionado','Câmeras de segurança na parte externa da propriedade','Detector de monóxido de carbono','Detector de fumaça'];
+const s5=`<header class="hs" style="padding:16px 48px"><div class="logo">LOGO</div>
+<div class="row g16" style="border:1px solid var(--line);border-radius:999px;padding:8px 8px 8px 24px;box-shadow:0 2px 8px rgba(0,0,0,.08)"><span class="m">Qualquer lugar</span><span class="vd" style="height:24px"></span><span class="m">Qualquer semana</span><span class="vd" style="height:24px"></span><span class="mu">Hóspedes?</span><span class="sbtn" style="width:32px;height:32px">${SEARCH}</span></div>${actions()}</header>
+<div class="pdp">
+<div class="row between"><div style="font-size:26px;font-weight:500">Apto 106 - Porto de Galinhas - Centro de Porto</div><div class="row g16 m u"><span>Compartilhar</span><span>Salvar</span></div></div>
+<div class="gallery"><div class="img"></div><div class="img"></div><div class="img"></div><div class="img"></div><div class="img"></div><span class="btn out sm">Mostrar todas as fotos</span></div>
+<div class="two"><div class="left">
+ <div><h2>Espaço inteiro: apartamento em Ipojuca, Brasil</h2><div class="s16">4 hóspedes · 1 quarto · 2 camas · 1 banheiro</div></div>
+ <div class="box row g24" style="padding:20px 24px"><div class="b s16">Preferido<br>dos hóspedes</div><div style="flex:1">Uma das acomodações no Airbnb que fazem mais sucesso com os hóspedes</div><div class="col c"><span class="b s18">5,0</span><span style="font-size:10px">★★★★★</span></div><div class="vd" style="height:40px"></div><div class="col c"><span class="b s18">6</span><span class="u m" style="font-size:10px">avaliações</span></div></div>
+ <div class="hr"></div>
+ <div class="row g16"><span class="circle" style="background:var(--fill)"></span><div><div class="m s16">Anfitrião(ã): Catalina</div><div class="mu">Anfitriã há 4 meses</div></div></div>
+ <div class="hr"></div>
+ ${[['Aproveite para dar um mergulho','Esta é uma das poucas acomodações na região com piscina.'],['Self check-in','Faça check-in você mesmo com o cofre de chaves.'],['Paz e tranquilidade','Esta acomodação fica em uma região tranquila.']].map(([a,b])=>`<div class="row g24" style="align-items:flex-start"><span class="ico"></span><div><div class="m s16">${a}</div><div class="mu">${b}</div></div></div>`).join('')}
+ <div class="hr"></div>
+ <div style="background:var(--soft);border-radius:8px;padding:14px 16px">Algumas informações foram traduzidas automaticamente. <span class="u m">Exibir original</span></div>
+ <p class="s16">Apartamento 106 no coração do Porto, novo e projetado para uma experiência incrível. Localizado a apenas 200 metros do mar e a 2 minutos da Rua das Sombrinhas, a poucos passos da Rua Beijupirá. Ambientes modernos, iluminados e confortáveis, com piscina e área gourmet para aproveitar o melhor de Porto de Galinhas.</p>
+ <span class="u m s16">Mostrar mais</span>
+ <div class="hr"></div>
+ <h2>Onde você vai dormir</h2>
+ <div class="row g16">${[['Quarto','1 cama queen'],['Sala de estar','1 cama queen']].map(([a,b])=>`<div style="flex:1"><div class="img" style="height:200px"></div><div class="m s16" style="margin-top:8px">${a}</div><div class="mu">${b}</div></div>`).join('')}</div>
+ <div class="hr"></div>
+ <h2>O que esse lugar oferece</h2>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 24px">${AMS.map(a=>`<div class="row g16"><span class="ico"></span><span class="s16">${a}</span></div>`).join('')}</div>
+ <div><span class="btn out">Mostrar todas as 29 comodidades</span></div>
+ <div class="hr"></div>
+ <div><h2>Selecione a data de check-in</h2><div class="mu">Adicione suas datas de viagem para um preço exato</div></div>
+ <div class="row g32" style="align-items:flex-start">${month('novembro de 2026',0,30,11)}${month('dezembro de 2026',2,31,0)}</div>
+ <div class="row between"><span class="ico" style="height:16px"></span><span class="u m">Limpar datas</span></div>
+</div>
+<div class="right">
+ <div class="box shadow col g16" style="padding:24px;width:100%">
+  <h2>Adicione datas para ver os preços</h2>
+  <div class="group"><div style="padding:0"><div style="flex:1;padding:10px 12px"><div class="b" style="font-size:10px;color:var(--ink)">CHECK-IN</div><div>Adicionar data</div></div><div style="flex:1;padding:10px 12px;border-left:1px solid var(--muted)"><div class="b" style="font-size:10px;color:var(--ink)">CHECKOUT</div><div>Adicionar data</div></div></div>
+  <div style="padding:10px 12px"><div><div class="b" style="font-size:10px;color:var(--ink)">HÓSPEDES</div><div style="color:var(--ink)">1 hóspede</div></div>${CHEV}</div></div>
+  <span class="btn full">Conferir disponibilidade</span>
+ </div>
+ <span class="u m mu">Denunciar este anúncio</span>
+</div></div>
+<div class="hr"></div>
+<div class="col g8" style="align-items:center"><div class="b" style="font-size:72px;line-height:1">5,0</div><h2>Preferido dos hóspedes</h2><p class="mu s16 c" style="width:420px">Esta acomodação é uma das preferidas dos hóspedes, com base em avaliações, comentários e confiabilidade</p><span class="u m">Como funcionam as avaliações</span></div>
+<div class="cats"><div><span class="m">Avaliação geral</span>${[5,4,3,2,1].map(n=>`<div class="row g8" style="font-size:10px">${n}<span class="bar" style="${n===5?'background:var(--ink)':''}"></span></div>`).join('')}</div>
+${[['Limpeza','5,0'],['Exatidão do anúncio','5,0'],['Check-in','5,0'],['Comunicação','4,7'],['Localização','5,0'],['Custo-benefício','5,0']].map(([a,b])=>`<div><span class="m">${a}</span><span class="m s18">${b}</span><span class="ico" style="width:28px;height:28px;border-radius:6px"></span></div>`).join('')}</div>
+<div class="m s16">Os hóspedes mencionam</div>
+<div class="row g8" style="flex-wrap:wrap">${['Praia 3','Localização 3','Conforto 3','Limpeza 2','Gentileza 2','Arredores 2','Espaço interno 2','Hospitalidade 2'].map(c=>`<span class="chip">${c}</span>`).join('')}</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:40px 80px">${REV.map(([n,s,w,t])=>`<div class="col g8"><div class="row g12"><span class="circle" style="width:48px;height:48px;background:var(--fill)"></span><div><div class="m s16">${n}</div><div class="mu">${s}</div></div></div><div class="s12">★★★★★ · ${w} · Ficou algumas noites</div><p class="s16">${t}</p><span class="u m s16">Mostrar mais</span></div>`).join('')}</div>
+<div class="hr"></div>
+<div class="col g16"><h2>Onde você estará</h2><div class="s16">Ipojuca, Pernambuco, Brasil</div><div class="img" style="height:480px"></div></div>
+<div class="hr"></div>
+<h2>Conheça seu anfitrião</h2>
+<div class="row g32" style="align-items:flex-start;gap:64px"><div class="col g16" style="width:420px">
+ <div class="row g32 shadow" style="padding:32px;border-radius:24px"><div class="col g4" style="align-items:center;flex:1"><span class="circle" style="width:104px;height:104px;background:var(--fill)"></span><span class="b" style="font-size:28px">Catalina</span><span>Anfitriã</span></div>
+ <div class="col g12" style="width:100px">${[['6','avaliações'],['5,0 ★','Avaliação'],['8','meses hospedando']].map(([a,b],i)=>`${i?'<div class="hr"></div>':''}<div><div class="b" style="font-size:22px">${a}</div><div class="m" style="font-size:10px">${b}</div></div>`).join('')}</div></div>
+ <div class="s16">Onde estudei: SAGE</div><div class="s16">Meu trabalho: Turismo e hospitalidade</div>
+ <p class="s16">Sou Catalina, anfitriã do Airbnb, onde tenho meu apartamento para todos os hóspedes que viajam a Porto de Galinhas. Gosto de ajudar meus hóspedes com as melhores recomendações e informações sobre o destino.</p></div>
+ <div class="col g16" style="flex:1"><div class="m s18">Informações do anfitrião</div><div class="s16">Taxa de resposta: 100%</div><div class="s16">Responde em até 1 hora</div><div><span class="btn sec">Enviar mensagem ao anfitrião</span></div><div class="hr"></div><div class="mu s12">Para ajudar a proteger seus pagamentos, sempre use o Airbnb para enviar dinheiro e se comunicar com os anfitriões.</div></div></div>
+<div class="hr"></div>
+<h2>O que você deve saber</h2>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">${[['Check-in depois das 14:00','Checkout antes das 11:00 · Self check-in com cofre de chaves'],['Regras da Casa e outros padrões','Confira as informações para ver os detalhes completos.'],['Segurança e propriedade','Câmera de segurança externa · Detector de fumaça'],['Política de cancelamento','Adicione as datas da viagem para obter informações de cancelamento.']].map(([a,b])=>`<div class="col g8"><span class="ico"></span><span class="m s16">${a}</span><span class="mu">${b}</span><span class="u m">Saiba mais</span></div>`).join('')}</div>
+</div>
+<section style="background:var(--soft);padding:40px 160px" class="col g24">
+<div class="mu">Airbnb › Brasil › Pernambuco › Ipojuca</div><h2>Explore outras opções em Ipojuca e nos arredores</h2>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px 24px">${['Porto de Galinhas','Praia do Pipa','Jaboatão dos Guararapes','Garanhuns','Praia de Muro Alto','São Miguel dos Milagres','Tamandaré','Gravatá','Maceió'].map(c=>`<div><div class="m">${c}</div><div class="mu">Aluguel por temporada</div></div>`).join('')}</div>
+<h2>Outros tipos de acomodações no Airbnb</h2>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px 24px" class="m">${['Ipojuca: aluguel por temporada','Ipojuca: casas de praia','Pernambuco: apartamentos para alugar','Ipojuca: locações com piscina','Pernambuco: aluguel por temporada','Brasil: apartamentos para alugar'].map(x=>`<span>${x}</span>`).join('')}</div>
+</section>`+rodape();
+
+// 06 Login
+let tilesBg='';for(let r=0;r<3;r++)for(let k=-1;k<6;k++)tilesBg+=`<div class="img" style="position:absolute;width:240px;height:280px;border-radius:16px;opacity:.8;left:${k*272+(r%2?136:24)}px;top:${-30+r*310}px;background-color:#e2e2e2"></div>`;
+const s6=headerSimples()+`<div style="position:relative;height:780px;background:var(--soft);overflow:hidden">${tilesBg}<div class="overlay" style="background:rgba(34,34,34,.3)"></div>
+<div class="modal col g16" style="width:400px;left:520px;top:150px;padding:40px 24px 48px;align-items:center;gap:20px">
+<span class="mark"></span><h2>Entrar ou cadastrar-se</h2>
+<div class="field" style="width:100%">Número de telefone ou email</div>
+<span class="btn full">Continuar</span>
+<div class="row g12" style="width:100%"><span class="hr" style="flex:1"></span><span class="mu s12">ou</span><span class="hr" style="flex:1"></span></div>
+<div class="row g12">${['G','A'].map(l=>`<span style="width:48px;height:48px;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center" class="b s16">${l}</span>`).join('')}</div>
+</div></div>`+rodape();
+
+// 07 Endereço do anfitrião
+const s7=`<div style="position:relative;height:900px">
+<span class="mark" style="position:absolute;left:40px;top:28px;width:32px;height:32px"></span>
+<div class="col g24" style="position:absolute;left:180px;top:260px"><div class="b" style="font-size:56px;line-height:1.05">Configure seu<br>anúncio no Airbnb</div>
+<div class="mu s18">É fácil criar um anúncio e começar a receber hóspedes.<br>Vamos começar.</div>
+<div class="row g12" style="width:420px;border:1px solid var(--line);border-radius:999px;padding:14px 20px"><span style="width:16px;height:16px;border:2px solid var(--ink);border-radius:50%"></span><span class="mu">Insira seu endereço</span></div>
+<div class="mu">Você não está anunciando um espaço? Anuncie uma experiência ou serviço</div></div>
+<div style="position:absolute;left:800px;top:170px;width:560px;height:560px;border-radius:48px;background:var(--soft)"></div>
+<div class="img" style="position:absolute;left:930px;top:250px;width:300px;height:380px;border-radius:16px"></div>
+<div class="overlay"></div>
+<div class="modal col" style="width:568px;left:436px;top:56px;gap:16px">
+ <div class="row between" style="padding:20px 24px 0">${BACK}${CLOSE}</div>
+ <div class="c" style="font-size:24px;font-weight:500">Confirme seu endereço</div>
+ <div class="col g12" style="padding:8px 24px 0">
+  <div class="field"><div><small>País/região</small><span class="v">Brasil - BR</span></div>${CHEV}</div>
+  <div class="group">${['Endereço','Apto, suíte, unidade (se aplicável)','Bairro (se aplicável)','Cidade/município','Distrito estadual/federal','CEP'].map(x=>`<div>${x}</div>`).join('')}</div>
+ </div>
+ <div class="row g16" style="background:var(--soft);padding:20px 24px"><span style="width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center" class="b">!</span><div><div class="m">Não conseguimos encontrar a sua localização</div><div class="mu s12">Insira seu endereço.</div></div></div>
+ <div style="padding:16px 24px;border-top:1px solid var(--line)"><span class="btn full">Próximo</span></div>
+</div></div>`;
+
+// 08 Checkout
+const radio=on=>`<span style="width:22px;height:22px;border-radius:50%;border:${on?'2px solid var(--ink)':'1px solid var(--muted)'};display:flex;align-items:center;justify-content:center;flex:none">${on?'<span style="width:10px;height:10px;border-radius:50%;background:var(--ink)"></span>':''}</span>`;
+const line=(a,b)=>`<div class="row between"><div><div class="m">${a}</div><div>${b}</div></div><span class="btn sec sm">Alterar</span></div>`;
+const s8=headerSimples(false)+`<div style="width:1120px;margin:0 auto;padding:40px 0 64px" class="col g32">
+<div class="row g16"><span class="circle">${BACK}</span><span style="font-size:32px;font-weight:500">Confirmar e pagar</span></div>
+<div class="row" style="gap:64px;align-items:flex-start">
+<div class="col g16" style="flex:1">
+ <div class="box shadow col g16" style="padding:24px;border-radius:16px">
+  <div class="m s18">1. Adicione uma forma de pagamento</div>
+  <div class="s16">Formas de pagamento disponíveis para BRL.<br><span class="u m">Alterar moeda</span></div>
+  <div class="row g16"><span class="ico"></span><div style="flex:1"><div class="s16">Pix</div><div class="mu s12">Parcelamento não disponível</div></div>${radio(true)}</div>
+  <div><div class="m s16">Informações fiscais</div><div class="mu s12">Digite suas informações exatamente como aparecem em seu documento de identificação.</div></div>
+  <div class="group"><div>Nome legal completo</div><div>CPF</div><div>Data de nascimento <span class="ico" style="width:16px;height:16px;background:var(--muted);border-radius:3px"></span></div></div>
+  <div class="hr"></div>
+  <div class="row g16"><span class="ico"></span><div style="flex:1"><div class="s16">Cartão de crédito</div><div class="mu s12">ou em 12x de R$ 157,72</div><div class="row g4" style="margin-top:4px">${'<span style="width:24px;height:14px;border-radius:2px;background:var(--fill)"></span>'.repeat(4)}</div></div>${radio(false)}</div>
+  <div class="hr"></div>
+  <div class="row" style="justify-content:flex-end"><span class="btn">Próximo</span></div>
+ </div>
+ <div class="box" style="padding:24px;border-radius:16px"><div class="m s18">2. Selecione o número de parcelas</div></div>
+</div>
+<div class="col g16" style="width:400px">
+ <div class="row g12" style="background:var(--soft);border-radius:12px;padding:14px 16px"><span style="width:20px;height:20px;border:2px solid var(--ink);border-radius:50%;flex:none"></span><span>Você só tem mais 4 horas para reservar suas datas</span></div>
+ <div class="box col g16" style="padding:24px;border-radius:16px">
+  <div class="row g16"><div class="img" style="width:100px;height:100px;border-radius:8px;flex:none"></div><div><div class="m s18">Casa edícula aconchegante á 100 mts da praia!</div><div class="s12">★ 5,0 (12)</div></div></div>
+  <div>Esta reserva não é reembolsável. <span class="u m">Política completa</span></div>
+  <div class="hr"></div>${line('Datas','13 – 15 de nov. de 2026')}<div class="hr"></div>${line('Hóspedes','1 adulto')}<div class="hr"></div>
+  <div class="m">Informações de preço</div><div class="row between"><span>2 noites x R$ 816,50</span><span>R$ 1.633,00</span></div>
+  <div class="hr"></div><div class="row between m"><span>Total <span class="u">BRL</span></span><span>R$ 1.633,00</span></div>
+  <span class="u m">Detalhamento do preço</span>
+ </div>
+</div></div></div>`;
+
+// Capa
+const LIST=[['01','Início (Tudo)','página inicial com carrosséis de acomodações'],['02','Acomodações','aba de acomodações'],['03','Experiências','aba de experiências'],['04','Serviços','aba de serviços'],['05','Anúncio','detalhe da acomodação'],['06','Login','entrar ou cadastrar-se'],['07','Anfitrião: confirmar endereço','cadastro de anúncio (image 1)'],['08','Checkout: confirmar e pagar','pagamento da reserva (image 2)']];
+const cover=`<div style="height:900px;padding:120px 120px" class="col g32"><div class="logo">LOGO</div><div><div class="b" style="font-size:56px;line-height:1.1">Clone Airbnb</div><div style="font-size:32px" class="mu">Wireframes de baixa fidelidade</div></div>
+<div class="hr" style="width:640px"></div>
+<div class="col g12">${LIST.map(([n,t,d])=>`<div class="row g16 s18"><span class="b" style="width:36px">${n}</span><span class="m">${t}</span><span class="mu">— ${d}</span></div>`).join('')}</div>
+<div class="mu" style="margin-top:auto">Desktop · 1440 px · Novembro de 2026</div></div>`;
+
+document.getElementById('root').innerHTML=
+ `<div class="screen" id="s0">${cover}</div>`+
+ screen('s1','Wireframe 01 — Início (Tudo)','Referência: Figma 2:1847',s1)+
+ screen('s2','Wireframe 02 — Acomodações','Referência: Figma 18:11',s2)+
+ screen('s3','Wireframe 03 — Experiências','Referência: Figma 18:2034',s3)+
+ screen('s4','Wireframe 04 — Serviços','Referência: Figma 18:3216',s4)+
+ screen('s5','Wireframe 05 — Anúncio','Referência: Figma 2:45',s5)+
+ screen('s6','Wireframe 06 — Login','Referência: Figma 3:3',s6)+
+ screen('s7','Wireframe 07 — Anfitrião: confirmar endereço','Referência: Figma image 1 (18:6)',s7)+
+ screen('s8','Wireframe 08 — Checkout: confirmar e pagar','Referência: Figma image 2 (18:2030)',s8);
+
+// Uma página do PDF por tela, com a altura exata de cada uma
+function sizePages(){
+ let css='';
+ document.querySelectorAll('.screen').forEach((el,i)=>{const h=Math.ceil(el.getBoundingClientRect().height); css+=`@page p${i}{size:1440px ${h}px;margin:0} #${el.id}{page:p${i}}\n`;});
+ const st=document.createElement('style'); st.textContent=css; document.head.appendChild(st);
+}
+(document.fonts?document.fonts.ready:Promise.resolve()).then(sizePages);
+</script>
+</body>
+</html>
