@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detalhes da acomodação, fotos, comodidades, avaliações e reserva.">
+    <title>Anúncio | Clone Airbnb</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="anuncio">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- ===== CABEÇALHO ===== -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-topo">
+                <a href="index.html" class="logo" aria-label="Clone Airbnb — página inicial">
+                    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3 2 15.2l2 2.3 2-1.8V29h8v-8h4v8h8V15.7l2 1.8 2-2.3zM23 26h-2v-8H11v8H9V13.1l7-6.1 7 6.1z"/></svg>
+                    <span>airbnb</span>
+                </a>
+                <a href="acomodacoes.html" class="busca-compacta" aria-label="Fazer uma nova busca">
+                    <span>Qualquer lugar</span><span class="sep opcional"></span><span class="opcional">Qualquer semana</span><span class="sep opcional"></span><span class="texto-suave opcional">Hóspedes?</span>
+                    <span class="lupa"><i class="bi bi-search" aria-hidden="true"></i></span>
+                </a>
+                <div class="header-acoes">
+                    <a href="anfitriao.html" class="link-anfitriao">Torne-se um anfitrião</a>
+                    <button type="button" class="icon-btn" data-acao="tema" aria-pressed="false" aria-label="Alternar tema escuro"><i class="bi bi-moon" aria-hidden="true"></i></button>
+                    <div class="menu-usuario">
+                        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-usuario" aria-label="Abrir menu">
+                            <i class="bi bi-list" aria-hidden="true"></i><i class="bi bi-person-circle" aria-hidden="true"></i>
+                        </button>
+                        <nav class="menu-dropdown" id="menu-usuario" aria-label="Menu do usuário" hidden>
+                            <a href="login.html" data-menu="entrar"><strong>Entrar</strong></a>
+                            <a href="login.html#cadastro" data-menu="cadastrar">Cadastrar-se</a>
+                            <div class="separador" role="separator"></div>
+                            <a href="favoritos.html">Favoritos <span class="contador contador-favoritos"></span></a>
+                            <a href="anfitriao.html">Torne-se um anfitrião</a>
+                            <a href="#rodape">Central de Ajuda</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== CONTEÚDO (preenchido pelo js/anuncio.js a partir do ?id= da URL) ===== -->
+    <main id="conteudo" class="container anuncio">
+        <div class="anuncio-topo">
+            <h1 id="anuncio-titulo">Carregando anúncio...</h1>
+            <div class="anuncio-acoes">
+                <button type="button" id="btn-compartilhar"><i class="bi bi-box-arrow-up" aria-hidden="true"></i> Compartilhar</button>
+                <button type="button" id="btn-salvar" aria-pressed="false"><i class="bi bi-heart" aria-hidden="true"></i> <span>Salvar</span></button>
+            </div>
+        </div>
+        <p class="alerta alerta-sucesso" id="aviso-copiado" role="status" hidden><i class="bi bi-check-circle" aria-hidden="true"></i><span></span></p>
+
+        <!-- Galeria: cada foto abre o modal com o carrossel -->
+        <div class="galeria" id="galeria">
+            <a href="#modal-galeria" class="btn btn-contorno btn-pequeno" id="btn-todas-fotos"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i> Mostrar todas as fotos</a>
+        </div>
+
+        <div class="anuncio-colunas">
+            <div class="anuncio-info">
+                <section aria-labelledby="anuncio-subtitulo">
+                    <div>
+                        <h2 id="anuncio-subtitulo"></h2>
+                        <p id="anuncio-resumo"></p>
+                    </div>
+                    <div class="destaque-box" id="anuncio-destaque"></div>
+                </section>
+
+                <hr class="divisor">
+                <div class="anfitriao-mini" id="anfitriao-mini"></div>
+                <hr class="divisor">
+
+                <ul class="vantagens">
+                    <li><i class="bi bi-door-open" aria-hidden="true"></i><div><strong>Self check-in</strong><span class="texto-suave">Faça check-in você mesmo com o cofre de chaves.</span></div></li>
+                    <li><i class="bi bi-geo-alt" aria-hidden="true"></i><div><strong>Ótima localização</strong><span class="texto-suave">95% dos hóspedes recentes deram 5 estrelas para a localização.</span></div></li>
+                    <li><i class="bi bi-calendar-x" aria-hidden="true"></i><div><strong>Cancelamento gratuito por 48 horas</strong><span class="texto-suave">Receba o reembolso total se mudar de ideia.</span></div></li>
+                </ul>
+
+                <hr class="divisor">
+                <section aria-labelledby="titulo-sobre">
+                    <h2 id="titulo-sobre">Sobre este espaço</h2>
+                    <p id="anuncio-descricao"></p>
+                </section>
+
+                <hr class="divisor">
+                <section aria-labelledby="titulo-dormir">
+                    <h2 id="titulo-dormir">Onde você vai dormir</h2>
+                    <div class="comodos" id="anuncio-comodos"></div>
+                </section>
+
+                <hr class="divisor">
+                <section aria-labelledby="titulo-comodidades">
+                    <h2 id="titulo-comodidades">O que esse lugar oferece</h2>
+                    <ul class="comodidades" id="anuncio-comodidades"></ul>
+                </section>
+
+                <hr class="divisor">
+                <!-- Calendário gerado pelo JS: clique no dia para escolher check-in e checkout -->
+                <section aria-labelledby="titulo-calendario">
+                    <div class="calendario-cabecalho">
+                        <div>
+                            <h2 id="titulo-calendario">Selecione a data de check-in</h2>
+                            <p class="texto-suave" id="calendario-dica">Adicione suas datas de viagem para um preço exato</p>
+                        </div>
+                        <div class="carrossel-controles">
+                            <button type="button" class="icon-btn" id="mes-anterior" aria-label="Mês anterior"><i class="bi bi-chevron-left" aria-hidden="true"></i></button>
+                            <button type="button" class="icon-btn" id="mes-seguinte" aria-label="Próximo mês"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    <div class="calendario" id="calendario"></div>
+                    <div style="text-align:right"><button type="button" class="link-sublinhado" id="limpar-datas">Limpar datas</button></div>
+                </section>
+            </div>
+
+            <!-- Card de reserva: formulário GET que leva ao checkout -->
+            <aside aria-labelledby="titulo-reserva">
+                <form class="reserva-card" id="form-reserva" action="checkout.html" method="get" novalidate>
+                    <h2 id="titulo-reserva" class="reserva-preco">Adicione datas para ver os preços</h2>
+                    <input type="hidden" name="id" id="reserva-id">
+                    <div class="reserva-campos">
+                        <div class="campo">
+                            <label for="reserva-checkin">Check-in</label>
+                            <input type="date" id="reserva-checkin" name="checkin" required data-nome="O check-in">
+                        </div>
+                        <div class="campo">
+                            <label for="reserva-checkout">Checkout</label>
+                            <input type="date" id="reserva-checkout" name="checkout" required data-nome="O checkout">
+                        </div>
+                        <div class="campo">
+                            <label for="reserva-hospedes">Hóspedes</label>
+                            <input type="number" id="reserva-hospedes" name="hospedes" min="1" max="16" value="1" required data-nome="O número de hóspedes">
+                        </div>
+                    </div>
+                    <div class="reserva-erros" id="reserva-erros" aria-live="polite"></div>
+                    <button type="submit" class="btn btn-primario btn-bloco">Reservar</button>
+                    <p class="texto-suave" style="text-align:center;font-size:.875rem">Você ainda não será cobrado</p>
+
+                    <!-- Detalhamento do preço (tabela atualizada pelo JS) -->
+                    <table class="tabela-preco" id="tabela-preco" hidden>
+                        <caption class="visually-hidden">Detalhamento do preço da reserva</caption>
+                        <tbody></tbody>
+                        <tfoot><tr><td>Total</td><td id="preco-total"></td></tr></tfoot>
+                    </table>
+                </form>
+                <p style="text-align:center;margin-top:16px"><a href="#" class="texto-suave" style="font-size:.875rem"><i class="bi bi-flag" aria-hidden="true"></i> Denunciar este anúncio</a></p>
+            </aside>
+        </div>
+
+        <hr class="divisor">
+
+        <!-- Avaliações -->
+        <section aria-labelledby="titulo-avaliacoes" style="display:flex;flex-direction:column;gap:32px">
+            <div class="nota-geral">
+                <p class="nota" id="nota-geral"></p>
+                <h2 id="titulo-avaliacoes">Preferido dos hóspedes</h2>
+                <p class="texto-suave" style="max-width:420px">Esta acomodação é uma das preferidas dos hóspedes, com base em avaliações, comentários e confiabilidade.</p>
+            </div>
+            <div class="categorias-nota">
+                <div><i class="bi bi-stars" aria-hidden="true"></i>Limpeza<strong>5,0</strong></div>
+                <div><i class="bi bi-check-circle" aria-hidden="true"></i>Exatidão do anúncio<strong>5,0</strong></div>
+                <div><i class="bi bi-key" aria-hidden="true"></i>Check-in<strong>5,0</strong></div>
+                <div><i class="bi bi-chat" aria-hidden="true"></i>Comunicação<strong>4,7</strong></div>
+                <div><i class="bi bi-map" aria-hidden="true"></i>Localização<strong>5,0</strong></div>
+                <div><i class="bi bi-tag" aria-hidden="true"></i>Custo-benefício<strong>5,0</strong></div>
+            </div>
+            <div class="avaliacoes" id="lista-avaliacoes"></div>
+        </section>
+
+        <hr class="divisor">
+        <section aria-labelledby="titulo-mapa" style="display:flex;flex-direction:column;gap:16px">
+            <h2 id="titulo-mapa">Onde você estará</h2>
+            <p id="anuncio-local"></p>
+            <iframe class="mapa" id="mapa" title="Mapa da região da acomodação" loading="lazy"></iframe>
+        </section>
+
+        <hr class="divisor">
+        <section aria-labelledby="titulo-saber" style="display:flex;flex-direction:column;gap:24px">
+            <h2 id="titulo-saber">O que você deve saber</h2>
+            <div class="saber">
+                <article><i class="bi bi-clock" aria-hidden="true"></i><h3>Regras da casa</h3><p class="texto-suave">Check-in depois das 14:00 · Checkout antes das 11:00 · <span id="regra-hospedes"></span></p></article>
+                <article><i class="bi bi-shield-check" aria-hidden="true"></i><h3>Segurança e propriedade</h3><p class="texto-suave">Câmera de segurança externa · Detector de fumaça</p></article>
+                <article><i class="bi bi-calendar-check" aria-hidden="true"></i><h3>Política de cancelamento</h3><p class="texto-suave">Cancelamento gratuito por 48 horas. <span id="regra-noites"></span></p></article>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer class="rodape" id="rodape">
+        <div class="container">
+            <div class="rodape-colunas">
+                <nav aria-labelledby="rodape-atendimento">
+                    <h2 id="rodape-atendimento">Atendimento</h2>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">AirCover</a></li>
+                        <li><a href="#">Antidiscriminação</a></li>
+                        <li><a href="#">Apoio à pessoa com deficiência</a></li>
+                        <li><a href="#">Opções de cancelamento</a></li>
+                    </ul>
+                </nav>
+                <nav aria-labelledby="rodape-hospedagem">
+                    <h2 id="rodape-hospedagem">Hospedagem</h2>
+                    <ul>
+                        <li><a href="anfitriao.html">Anuncie seu espaço</a></li>
+                        <li><a href="anfitriao.html">Anuncie sua experiência</a></li>
+                        <li><a href="#">AirCover para anfitriões</a></li>
+                        <li><a href="#">Recursos para anfitriões</a></li>
+                        <li><a href="#">Hospedagem responsável</a></li>
+                    </ul>
+                </nav>
+                <nav aria-labelledby="rodape-empresa">
+                    <h2 id="rodape-empresa">Airbnb</h2>
+                    <ul>
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Investidores</a></li>
+                        <li><a href="#">Locais emergenciais Airbnb.org</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="rodape-base">
+                <p>© <span data-ano>2026</span> Clone Airbnb · Privacidade · Termos</p>
+                <div class="redes">
+                    <span><i class="bi bi-globe" aria-hidden="true"></i> Português (BR)</span>
+                    <span>R$ BRL</span>
+                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="X (Twitter)"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <p class="aviso-educacional">
+                <i class="bi bi-mortarboard" aria-hidden="true"></i>
+                Este site é um <strong>clone desenvolvido para fins educacionais</strong> (Desenvolvimento Web I — IFC Campus Concórdia),
+                sem qualquer vínculo com a Airbnb, Inc. Todos os usuários, anúncios, avaliações e valores são fictícios.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal da galeria (carrossel de fotos controlado pelo js/anuncio.js) -->
+    <dialog class="modal modal-galeria" id="modal-galeria" aria-labelledby="modal-galeria-titulo">
+        <div class="modal-cabecalho">
+            <h2 id="modal-galeria-titulo">Fotos</h2>
+            <button type="button" class="icon-btn btn-fechar" data-fechar aria-label="Fechar galeria"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+        </div>
+        <div class="modal-corpo">
+            <div class="galeria-slide">
+                <img id="galeria-foto" src="" alt="">
+                <button type="button" class="icon-btn anterior" id="foto-anterior" aria-label="Foto anterior"><i class="bi bi-chevron-left" aria-hidden="true"></i></button>
+                <button type="button" class="icon-btn proxima" id="foto-proxima" aria-label="Próxima foto"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            </div>
+            <p class="texto-suave" id="galeria-contador" style="text-align:center" aria-live="polite"></p>
+            <div class="galeria-miniaturas" id="galeria-miniaturas"></div>
+        </div>
+    </dialog>
+
+    <script src="js/dados.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/anuncio.js"></script>
+</body>
+</html>
