@@ -358,14 +358,9 @@ button.chip:hover { border-color: var(--cor-texto); }
 .logo {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    color: var(--cor-marca);
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -.5px;
+    flex-shrink: 0;
 }
-.logo svg { width: 32px; height: 32px; }
+.logo img { display: block; height: 32px; width: auto; }
 
 /* Abas Tudo / Acomodações / Experiências / Serviços */
 .abas { display: flex; gap: 32px; }
@@ -938,7 +933,6 @@ button.chip:hover { border-color: var(--cor-texto); }
 @media (max-width: 743px) {
     :root { --gutter: 16px; --tam-h1: 1.5rem; }
     .header-topo { flex-wrap: wrap; min-height: 64px; gap: 8px 12px; padding-top: 8px; }
-    .logo span { display: none; }
     /* as abas vão para uma linha própria abaixo do logo */
     .abas { order: 3; width: 100%; justify-content: space-around; gap: 8px; }
     .aba { flex-direction: column; gap: 2px; font-size: var(--tam-mini); padding-bottom: 8px; }
