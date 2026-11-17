@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Entre ou crie sua conta no clone educacional do Airbnb.">
+    <title>Entrar ou cadastrar-se | Clone Airbnb</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="login">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- ===== CABEÇALHO ===== -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-topo">
+                <a href="index.html" class="logo" aria-label="Clone Airbnb — página inicial">
+                    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3 2 15.2l2 2.3 2-1.8V29h8v-8h4v8h8V15.7l2 1.8 2-2.3zM23 26h-2v-8H11v8H9V13.1l7-6.1 7 6.1z"/></svg>
+                    <span>airbnb</span>
+                </a>
+                <div class="header-acoes">
+                    <a href="anfitriao.html" class="link-anfitriao">Torne-se um anfitrião</a>
+                    <button type="button" class="icon-btn" data-acao="tema" aria-pressed="false" aria-label="Alternar tema escuro"><i class="bi bi-moon" aria-hidden="true"></i></button>
+                    <div class="menu-usuario">
+                        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-usuario" aria-label="Abrir menu">
+                            <i class="bi bi-list" aria-hidden="true"></i><i class="bi bi-person-circle" aria-hidden="true"></i>
+                        </button>
+                        <nav class="menu-dropdown" id="menu-usuario" aria-label="Menu do usuário" hidden>
+                            <a href="login.html" data-menu="entrar"><strong>Entrar</strong></a>
+                            <a href="login.html#cadastro" data-menu="cadastrar">Cadastrar-se</a>
+                            <div class="separador" role="separator"></div>
+                            <a href="favoritos.html">Favoritos <span class="contador contador-favoritos"></span></a>
+                            <a href="anfitriao.html">Torne-se um anfitrião</a>
+                            <a href="#rodape">Central de Ajuda</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== CONTEÚDO ===== -->
+    <main id="conteudo" class="login-fundo">
+        <!-- Mosaico decorativo de fotos (alt vazio porque é só decoração) -->
+        <div class="login-mosaico" aria-hidden="true">
+            <img src="img/acomodacoes/casa-03.jpg" alt=""><img src="img/acomodacoes/casa-04.jpg" alt="">
+            <img src="img/acomodacoes/casa-06.jpg" alt=""><img src="img/acomodacoes/casa-08.jpg" alt="">
+            <img src="img/acomodacoes/casa-11.jpg" alt=""><img src="img/acomodacoes/casa-19.jpg" alt="">
+            <img src="img/acomodacoes/casa-22.jpg" alt=""><img src="img/acomodacoes/casa-24.jpg" alt="">
+            <img src="img/acomodacoes/casa-13.jpg" alt=""><img src="img/acomodacoes/casa-05.jpg" alt="">
+            <img src="img/acomodacoes/casa-18.jpg" alt=""><img src="img/acomodacoes/casa-07.jpg" alt="">
+        </div>
+
+        <section class="login-cartao" aria-labelledby="titulo-login">
+            <h1 id="titulo-login">Entrar ou cadastrar-se</h1>
+
+            <div class="abas-form" role="tablist" aria-label="Escolha entre entrar e cadastrar">
+                <button type="button" role="tab" id="aba-entrar" aria-controls="form-login" aria-selected="true">Entrar</button>
+                <button type="button" role="tab" id="aba-cadastro" aria-controls="form-cadastro" aria-selected="false" tabindex="-1">Cadastrar-se</button>
+            </div>
+
+            <p class="alerta alerta-sucesso" id="login-sucesso" role="status" hidden><i class="bi bi-check-circle" aria-hidden="true"></i><span></span></p>
+
+            <!-- Formulário 1: login -->
+            <form class="form-pilha" id="form-login" role="tabpanel" aria-labelledby="aba-entrar" action="index.html" method="post">
+                <p class="alerta alerta-erro" data-resumo hidden><i class="bi bi-exclamation-circle" aria-hidden="true"></i><span></span></p>
+                <div class="campo">
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" name="email" required autocomplete="email" placeholder="nome@exemplo.com" data-nome="O e-mail">
+                </div>
+                <div class="campo">
+                    <label for="login-senha">Senha</label>
+                    <div class="senha-wrapper">
+                        <input type="password" id="login-senha" name="senha" required minlength="8" autocomplete="current-password" data-nome="A senha">
+                        <button type="button" class="icon-btn" data-mostrar-senha="login-senha" aria-label="Mostrar senha" aria-pressed="false"><i class="bi bi-eye" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <label style="display:flex;gap:8px;align-items:center;font-size:.875rem">
+                    <input type="checkbox" name="lembrar" style="accent-color:var(--cor-texto)"> Manter conectado
+                </label>
+                <button type="submit" class="btn btn-primario btn-bloco">Continuar</button>
+                <a href="#" class="link-sublinhado" style="font-size:.875rem;text-align:center">Esqueceu a senha?</a>
+            </form>
+
+            <!-- Formulário 2: cadastro -->
+            <form class="form-pilha" id="form-cadastro" role="tabpanel" aria-labelledby="aba-cadastro" action="index.html" method="post" hidden>
+                <p class="alerta alerta-erro" data-resumo hidden><i class="bi bi-exclamation-circle" aria-hidden="true"></i><span></span></p>
+                <div class="campo">
+                    <label for="cad-nome">Nome completo</label>
+                    <input type="text" id="cad-nome" name="nome" required minlength="3" maxlength="80" autocomplete="name"
+                        pattern="[A-Za-zÀ-ÿ' ]+ [A-Za-zÀ-ÿ' ]+" data-msg-pattern="Informe nome e sobrenome, apenas com letras." data-nome="O nome">
+                </div>
+                <div class="campo">
+                    <label for="cad-email">E-mail</label>
+                    <input type="email" id="cad-email" name="email" required autocomplete="email" data-nome="O e-mail">
+                </div>
+                <div class="campo-linha">
+                    <div class="campo">
+                        <label for="cad-telefone">Celular</label>
+                        <input type="tel" id="cad-telefone" name="telefone" required data-mascara="telefone" placeholder="(49) 99999-9999"
+                            pattern="\(\d{2}\) \d{4,5}-\d{4}" data-msg-pattern="Use o formato (49) 99999-9999." autocomplete="tel" data-nome="O celular">
+                    </div>
+                    <div class="campo">
+                        <label for="cad-nascimento">Data de nascimento</label>
+                        <input type="date" id="cad-nascimento" name="nascimento" required min="1900-01-01"
+                            data-msg-max="Você precisa ter 18 anos ou mais para se cadastrar." data-nome="A data de nascimento">
+                    </div>
+                </div>
+                <div class="campo">
+                    <label for="cad-senha">Senha</label>
+                    <div class="senha-wrapper">
+                        <input type="password" id="cad-senha" name="senha" required minlength="8" autocomplete="new-password"
+                            pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" data-msg-pattern="A senha precisa ter letras e números." data-nome="A senha" aria-describedby="dica-senha">
+                        <button type="button" class="icon-btn" data-mostrar-senha="cad-senha" aria-label="Mostrar senha" aria-pressed="false"><i class="bi bi-eye" aria-hidden="true"></i></button>
+                    </div>
+                    <p class="dica" id="dica-senha">Mínimo de 8 caracteres, com letras e números.</p>
+                </div>
+                <div class="campo">
+                    <label for="cad-confirmar">Confirmar senha</label>
+                    <input type="password" id="cad-confirmar" name="confirmar" required autocomplete="new-password" data-nome="A confirmação">
+                </div>
+                <label style="display:flex;gap:8px;align-items:flex-start;font-size:.875rem" class="campo">
+                    <span style="display:flex;gap:8px"><input type="checkbox" name="termos" id="cad-termos" required style="accent-color:var(--cor-texto);width:auto;min-height:0">
+                    Concordo com os Termos de Serviço e a Política de Privacidade (fictícios).</span>
+                </label>
+                <button type="submit" class="btn btn-primario btn-bloco">Concordar e continuar</button>
+            </form>
+
+            <p class="separador-ou">ou</p>
+            <div class="login-social">
+                <button type="button" class="icon-btn" aria-label="Continuar com Google (indisponível no clone)"><i class="bi bi-google" aria-hidden="true"></i></button>
+                <button type="button" class="icon-btn" aria-label="Continuar com Apple (indisponível no clone)"><i class="bi bi-apple" aria-hidden="true"></i></button>
+                <button type="button" class="icon-btn" aria-label="Continuar com Facebook (indisponível no clone)"><i class="bi bi-facebook" aria-hidden="true"></i></button>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer class="rodape" id="rodape">
+        <div class="container">
+            <div class="rodape-colunas">
+                <nav aria-labelledby="rodape-atendimento">
+                    <h2 id="rodape-atendimento">Atendimento</h2>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">AirCover</a></li>
+                        <li><a href="#">Antidiscriminação</a></li>
+                        <li><a href="#">Apoio à pessoa com deficiência</a></li>
+                        <li><a href="#">Opções de cancelamento</a></li>
+                    </ul>
+                </nav>
+                <nav aria-labelledby="rodape-hospedagem">
+                    <h2 id="rodape-hospedagem">Hospedagem</h2>
+                    <ul>
+                        <li><a href="anfitriao.html">Anuncie seu espaço</a></li>
+                        <li><a href="anfitriao.html">Anuncie sua experiência</a></li>
+                        <li><a href="#">AirCover para anfitriões</a></li>
+                        <li><a href="#">Recursos para anfitriões</a></li>
+                        <li><a href="#">Hospedagem responsável</a></li>
+                    </ul>
+                </nav>
+                <nav aria-labelledby="rodape-empresa">
+                    <h2 id="rodape-empresa">Airbnb</h2>
+                    <ul>
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Investidores</a></li>
+                        <li><a href="#">Locais emergenciais Airbnb.org</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="rodape-base">
+                <p>© <span data-ano>2026</span> Clone Airbnb · Privacidade · Termos</p>
+                <div class="redes">
+                    <span><i class="bi bi-globe" aria-hidden="true"></i> Português (BR)</span>
+                    <span>R$ BRL</span>
+                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="X (Twitter)"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <p class="aviso-educacional">
+                <i class="bi bi-mortarboard" aria-hidden="true"></i>
+                Este site é um <strong>clone desenvolvido para fins educacionais</strong> (Desenvolvimento Web I — IFC Campus Concórdia),
+                sem qualquer vínculo com a Airbnb, Inc. Todos os usuários, anúncios, avaliações e valores são fictícios.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/dados.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/validacao.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
