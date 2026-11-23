@@ -65,14 +65,30 @@ O Airbnb é uma plataforma que conecta pessoas que querem alugar acomodações, 
 
 ## Como usar
 
-**Online:** acesse o [site publicado](https://isaelsoares.github.io/clone-airbnb/).
+**Online (versão estática da Parte 2):** acesse o [site publicado](https://isaelsoares.github.io/clone-airbnb/).
 
-**Localmente:**
+**Localmente com PHP (Parte 3):**
 
-1. Clone o repositório:
-   ```
-   git clone https://github.com/isaelsoares/clone-airbnb.git
-   ```
-2. Abra o `index.html` no navegador, ou use a extensão Live Server do VS Code.
+Clone o repositório:
 
-Não há back-end nesta etapa: login, cadastro e reserva são validados no navegador e não gravam dados em servidor.
+```
+git clone https://github.com/isaelsoares/clone-airbnb.git
+```
+
+*Opção A — Docker* (PHP 8.3 + MariaDB, banco criado automaticamente):
+
+```
+docker compose up -d
+```
+
+Acesse http://localhost:8080. Para recriar o banco do zero: `docker compose down -v` e suba de novo.
+
+*Opção B — XAMPP:*
+
+1. Copie a pasta para `C:\xampp\htdocs\clone-airbnb` e inicie Apache e MySQL.
+2. No phpMyAdmin, importe `database/clone_airbnb.sql`.
+3. Acesse http://localhost/clone-airbnb.
+
+A conexão fica em `includes/config.php` (padrão do XAMPP: usuário `root`, sem senha). Em hospedagem, altere os valores padrão de `DB_HOST`, `DB_NAME`, `DB_USER` e `DB_PASS` nesse arquivo.
+
+**Usuário de teste do painel:** `admin@clone.com` / `admin12345`

@@ -67,3 +67,10 @@ Ferramenta em todos os prompts: **Claude (claude.ai)**.
 - **Parte:** 2 — Front-end (formulários e acessibilidade)
 - **Prompt:** quero as mensagens de erro embaixo de cada campo em vez de alert, e q o leitor de tela consiga ler tmb
 - **Como foi aproveitado:** as mensagens passaram a ser criadas abaixo de cada campo, com `aria-live` e ligadas ao campo por `aria-describedby` (`js/validacao.js`).
+
+## 12. Configuração do PHP e do banco
+
+- **Ferramenta:** Claude Code
+- **Parte:** 3 — Back-end (PHP)
+- **Prompt:** leia só a parte 3 do trabalho preciso q vc crie os arquivos de config pra rodar o php e upe no github
+- **Como foi aproveitado:** foram criados `includes/config.php` (conexão PDO), `database/clone_airbnb.sql` (tabelas e dados fictícios) e `Dockerfile`/`docker-compose.yml` para rodar PHP + MariaDB localmente. O README recebeu as instruções de execução.
