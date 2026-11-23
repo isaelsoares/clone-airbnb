@@ -68,10 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
         regras: {
             confirmar: (valor, form) => valor !== form.elements.senha.value ? 'As senhas não conferem.' : ''
         },
-        aoEnviar: form => {
-            const nome = form.elements.nome.value.trim();
-            entrar(nome, `Conta criada! Boas-vindas, ${nome.split(' ')[0]}.`);
-        }
+        // dados válidos no cliente: envia ao PHP, que valida de novo e grava no banco
+        aoEnviar: form => form.submit()
     });
 
     aplicarMascaras();

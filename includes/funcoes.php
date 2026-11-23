@@ -152,6 +152,52 @@ function cpfValido(string $cpf): bool
     return true;
 }
 
+/* Valida os dados do cadastro de usuário e devolve os erros por campo */
+function validarCadastro(array $v, string $senha, string $confirmar, bool $termos): array
+{
+    $erros = [];
+
+    $tamanhoNome = mb_strlen($v['nome']);
+    if ($v['nome'] === '') {
+        $erros['nome'] = 'O nome é obrigatório.';
+    } elseif ($tamanhoNome < 3 || $tamanhoNome > 80 || !preg_match("/^[\p{L}' ]+ [\p{L}' ]+$/u", $v['nome'])) {
+        $erros['nome'] = 'Informe nome e sobrenome, apenas com letras.';
+    }
+
+    if ($v['email'] === '') {
+        $erros['email'] = 'O e-mail é obrigatório.';
+    } elseif (!filter_var($v['email'], FILTER_VALIDATE_EMAIL) || mb_strlen($v['email']) > 120) {
+        $erros['email'] = 'Informe um e-mail válido (ex.: nome@dominio.com).';
+    }
+
+    if (!preg_match('/^\(\d{2}\) \d{4,5}-\d{4}$/', $v['telefone'])) {
+        $erros['telefone'] = 'Use o formato (49) 99999-9999.';
+    }
+
+    $nascimento = dataValida($v['nascimento']);
+    if (!$nascimento || $v['nascimento'] < '1900-01-01') {
+        $erros['nascimento'] = 'Informe uma data de nascimento válida.';
+    } elseif (idade($v['nascimento']) < 18) {
+        $erros['nascimento'] = 'Você precisa ter 18 anos ou mais para se cadastrar.';
+    }
+
+    if (strlen($senha) < 8 || strlen($senha) > 72) {
+        $erros['senha'] = 'A senha deve ter entre 8 e 72 caracteres.';
+    } elseif (!preg_match('/[A-Za-z]/', $senha) || !preg_match('/\d/', $senha)) {
+        $erros['senha'] = 'A senha precisa ter letras e números.';
+    }
+
+    if ($confirmar !== $senha) {
+        $erros['confirmar'] = 'As senhas não conferem.';
+    }
+
+    if (!$termos) {
+        $erros['termos'] = 'Aceite os termos para continuar.';
+    }
+
+    return $erros;
+}
+
 /* =========================================================================
    REGRAS DE NEGÓCIO (as mesmas do js/dados.js, agora validadas no servidor)
    RN1 — O checkout deve ser posterior ao check-in, o check-in não pode ser

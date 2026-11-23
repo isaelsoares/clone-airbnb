@@ -10,6 +10,7 @@
      $aba            aba marcada no modo completo: inicio, acomodacoes, experiencias, servicos
      $busca          destino, rótulo e placeholder da busca do modo completo
      $buscaCompacta  true mostra o atalho "Qualquer lugar" no modo compacto
+     $mensagemNoTopo false quando a própria página exibe as mensagens da sessão
    ========================================================================= */
 
 $cabecalho = $cabecalho ?? 'completo';
@@ -126,6 +127,6 @@ $abas = [
         </div>
     </header>
 <?php endif; ?>
-<?php if ($mensagem = exibirMensagem()): ?>
+<?php if (($mensagemNoTopo ?? true) && ($mensagem = exibirMensagem())): ?>
     <div class="container mensagem-topo"><?= $mensagem ?></div>
 <?php endif; ?>

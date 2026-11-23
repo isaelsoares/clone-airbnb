@@ -55,6 +55,31 @@ function buscarAcomodacao(int $id): ?array
     return $linha ? montarAcomodacao($linha) : null;
 }
 
+/* ---------- Usuários ---------- */
+
+function emailCadastrado(string $email): bool
+{
+    $stmt = conectar()->prepare('SELECT 1 FROM usuarios WHERE email = :email');
+    $stmt->execute([':email' => $email]);
+    return (bool) $stmt->fetchColumn();
+}
+
+/* Grava o usuário com a senha protegida por password_hash; devolve o id */
+function cadastrarUsuario(array $u, string $senha): int
+{
+    $pdo = conectar();
+    $stmt = $pdo->prepare('INSERT INTO usuarios (nome, email, telefone, nascimento, senha)
+                           VALUES (:nome, :email, :telefone, :nascimento, :senha)');
+    $stmt->execute([
+        ':nome' => $u['nome'],
+        ':email' => $u['email'],
+        ':telefone' => $u['telefone'],
+        ':nascimento' => $u['nascimento'],
+        ':senha' => password_hash($senha, PASSWORD_DEFAULT),
+    ]);
+    return (int) $pdo->lastInsertId();
+}
+
 /* Gera o JSON das acomodações para o JavaScript (seguro dentro de <script>) */
 function acomodacoesParaJs(array $acomodacoes): string
 {
