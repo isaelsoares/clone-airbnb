@@ -149,6 +149,50 @@ function listarAcomodacoesPainel(string $busca = ''): array
     return $stmt->fetchAll();
 }
 
+/* Insere (sem $id) ou atualiza (com $id) uma acomodação; devolve o id */
+function salvarAcomodacao(array $a, ?int $id = null): int
+{
+    $campos = [
+        ':titulo' => $a['titulo'],
+        ':tipo' => $a['tipo'],
+        ':cidade' => $a['cidade'],
+        ':estado' => $a['estado'],
+        ':descricao' => $a['descricao'],
+        ':diaria' => $a['diaria'],
+        ':capacidade' => $a['capacidade'],
+        ':quartos' => $a['quartos'],
+        ':camas' => $a['camas'],
+        ':banheiros' => $a['banheiros'],
+        ':min_noites' => $a['minNoites'],
+        ':nota' => $a['nota'],
+        ':avaliacoes' => $a['avaliacoes'],
+        ':selo' => $a['selo'] ?: null,
+        ':anfitriao' => $a['anfitriao'],
+        ':anfitriao_desde' => $a['anfitriaoDesde'],
+        ':categorias' => implode(',', $a['categorias']),
+        ':imagens' => implode(',', $a['imagens']),
+        ':comodidades' => implode(',', $a['comodidades']),
+    ];
+    $pdo = conectar();
+
+    if ($id === null) {
+        $sql = 'INSERT INTO acomodacoes (titulo, tipo, cidade, estado, descricao, diaria, capacidade, quartos, camas,
+                    banheiros, min_noites, nota, avaliacoes, selo, anfitriao, anfitriao_desde, categorias, imagens, comodidades)
+                VALUES (:titulo, :tipo, :cidade, :estado, :descricao, :diaria, :capacidade, :quartos, :camas,
+                    :banheiros, :min_noites, :nota, :avaliacoes, :selo, :anfitriao, :anfitriao_desde, :categorias, :imagens, :comodidades)';
+        $pdo->prepare($sql)->execute($campos);
+        return (int) $pdo->lastInsertId();
+    }
+
+    $sql = 'UPDATE acomodacoes SET titulo = :titulo, tipo = :tipo, cidade = :cidade, estado = :estado, descricao = :descricao,
+                diaria = :diaria, capacidade = :capacidade, quartos = :quartos, camas = :camas, banheiros = :banheiros,
+                min_noites = :min_noites, nota = :nota, avaliacoes = :avaliacoes, selo = :selo, anfitriao = :anfitriao,
+                anfitriao_desde = :anfitriao_desde, categorias = :categorias, imagens = :imagens, comodidades = :comodidades
+            WHERE id = :id';
+    $pdo->prepare($sql)->execute($campos + [':id' => $id]);
+    return $id;
+}
+
 function contarReservasDaAcomodacao(int $id): int
 {
     $stmt = conectar()->prepare('SELECT COUNT(*) FROM reservas WHERE acomodacao_id = :id');

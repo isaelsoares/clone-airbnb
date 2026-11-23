@@ -947,6 +947,15 @@ button.chip:hover { border-color: var(--cor-texto); }
 .btn-perigo { color: var(--cor-erro); }
 .btn-perigo:hover { background: var(--cor-erro-fundo); }
 .painel-modal-acoes { display: flex; justify-content: flex-end; gap: 8px; }
+.painel-form { max-width: 880px; }
+.painel-form textarea { resize: vertical; }
+.painel-grade-campos { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.painel-opcoes { border: 0; padding: 0; margin: 0; }
+.opcoes-check { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.opcoes-check label { display: flex; align-items: center; gap: 6px; font-size: var(--tam-pequeno); font-weight: 400; }
+.opcoes-check input { width: auto; min-height: 0; accent-color: var(--cor-primaria); }
+.fotos-escolha { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.foto-opcao img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--raio-p); background: var(--cor-fundo-suave); }
 
 /* 10. RESPONSIVIDADE ---------------------------------------------------- */
 

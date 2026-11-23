@@ -281,6 +281,99 @@ function validarPagamento(array $v, string $cartao, string $cvv): array
     return $erros;
 }
 
+/* ---------- Cadastro de acomodações (painel) ---------- */
+
+/* Opções aceitas no formulário (as mesmas usadas pelo front-end) */
+const TIPOS_ACOMODACAO = ['Apartamento', 'Bangalô', 'Cabana', 'Casa', 'Chalé', 'Hotel', 'Pousada'];
+const CATEGORIAS = ['praia' => 'Praia', 'piscina' => 'Piscina', 'chale' => 'Chalés', 'hotel' => 'Hotéis', 'urbano' => 'Urbano'];
+const COMODIDADES = ['Cozinha', 'Wi-Fi', 'Estacionamento gratuito', 'Piscina', 'TV', 'Ar-condicionado', 'Lareira',
+    'Banheira de hidromassagem', 'Vista para o mar', 'Lava-louças', 'Espaço de trabalho', 'Detector de fumaça'];
+const SELOS = ['Preferido dos hóspedes'];
+const TOTAL_FOTOS = 5; // a galeria do anúncio mostra a capa + 4 fotos
+
+/* Fotos existentes em img/acomodacoes (ex.: "casa-01") */
+function fotosDisponiveis(): array
+{
+    $fotos = array_map(fn($arquivo) => basename($arquivo, '.jpg'), glob(__DIR__ . '/../img/acomodacoes/casa-*.jpg'));
+    sort($fotos);
+    return $fotos;
+}
+
+/* Número dentro do intervalo (aceita vírgula decimal); null se inválido */
+function numeroValido(string $texto, float $min, float $max, bool $inteiro = false): ?float
+{
+    $numero = filter_var(str_replace(',', '.', $texto), $inteiro ? FILTER_VALIDATE_INT : FILTER_VALIDATE_FLOAT);
+    if ($numero === false || $numero < $min || $numero > $max) {
+        return null;
+    }
+    return (float) $numero;
+}
+
+/* Valida os dados do formulário de acomodação e devolve os erros por campo */
+function validarAcomodacao(array $v): array
+{
+    $erros = [];
+
+    $textos = [
+        'titulo' => ['O título', 3, 120],
+        'cidade' => ['A cidade', 2, 80],
+        'estado' => ['O estado', 2, 40],
+        'anfitriao' => ['O nome do anfitrião', 2, 80],
+        'descricao' => ['A descrição', 10, 2000],
+    ];
+    foreach ($textos as $campo => [$rotulo, $min, $max]) {
+        $tamanho = mb_strlen($v[$campo]);
+        if ($tamanho < $min || $tamanho > $max) {
+            $erros[$campo] = "{$rotulo} deve ter entre {$min} e {$max} caracteres.";
+        }
+    }
+
+    if (!in_array($v['tipo'], TIPOS_ACOMODACAO, true)) {
+        $erros['tipo'] = 'Escolha um tipo de acomodação.';
+    }
+    if ($v['selo'] !== '' && !in_array($v['selo'], SELOS, true)) {
+        $erros['selo'] = 'Selo inválido.';
+    }
+
+    $numeros = [
+        'diaria' => ['A diária', 50, 10000, false],
+        'capacidade' => ['A capacidade', 1, 16, true],
+        'quartos' => ['O número de quartos', 1, 20, true],
+        'camas' => ['O número de camas', 1, 30, true],
+        'banheiros' => ['O número de banheiros', 1, 20, true],
+        'minNoites' => ['O mínimo de noites', 1, 30, true],
+        'nota' => ['A nota', 0, 5, false],
+        'avaliacoes' => ['O número de avaliações', 0, 100000, true],
+        'anfitriaoDesde' => ['O ano', 2008, (int) date('Y'), true],
+    ];
+    foreach ($numeros as $campo => [$rotulo, $min, $max, $inteiro]) {
+        if (numeroValido((string) $v[$campo], $min, $max, $inteiro) === null) {
+            $erros[$campo] = "{$rotulo} deve ser " . ($inteiro ? 'um número inteiro ' : '') . "entre {$min} e {$max}.";
+        }
+    }
+
+    // regra do cadastro: no máximo 2 hóspedes por cama
+    if (!isset($erros['capacidade']) && !isset($erros['camas']) && $v['capacidade'] > 2 * $v['camas']) {
+        $erros['capacidade'] = 'A capacidade não pode passar de 2 hóspedes por cama.';
+    }
+
+    if (!$v['categorias'] || array_diff($v['categorias'], array_keys(CATEGORIAS))) {
+        $erros['categorias'] = 'Marque ao menos uma categoria válida.';
+    }
+    if (array_diff($v['comodidades'], COMODIDADES)) {
+        $erros['comodidades'] = 'Comodidade inválida.';
+    }
+
+    $fotos = array_filter($v['imagens'], 'strlen');
+    if (count($fotos) !== TOTAL_FOTOS || array_diff($fotos, fotosDisponiveis())) {
+        $erros['imagens'] = 'Escolha ' . TOTAL_FOTOS . ' fotos.';
+    } elseif (count(array_unique($fotos)) !== TOTAL_FOTOS) {
+        $erros['imagens'] = 'As fotos não podem se repetir.';
+    }
+
+    return $erros;
+}
+
 /* Código exibido ao hóspede: 15 -> "HM000015" */
 function codigoReserva(int $id): string
 {

@@ -20,6 +20,7 @@ require '../includes/cabecalho.php';
     <main id="conteudo" class="container conteudo">
         <div class="painel-topo">
             <h1 class="titulo-pagina">Acomodações</h1>
+            <a href="acomodacao.php" class="btn btn-primario"><i class="bi bi-plus-lg" aria-hidden="true"></i> Nova acomodação</a>
         </div>
 
         <!-- Busca por título ou cidade (GET) -->
@@ -66,6 +67,7 @@ require '../includes/cabecalho.php';
                         <td>
                             <div class="acoes-tabela">
                                 <a href="../anuncio.php?id=<?= (int) $a['id'] ?>" class="icon-btn" aria-label="Ver anúncio de <?= e($a['titulo']) ?> no site"><i class="bi bi-eye" aria-hidden="true"></i></a>
+                                <a href="acomodacao.php?id=<?= (int) $a['id'] ?>" class="icon-btn" aria-label="Editar <?= e($a['titulo']) ?>"><i class="bi bi-pencil" aria-hidden="true"></i></a>
                                 <form action="excluir-acomodacao.php" method="post" class="form-excluir" data-titulo="<?= e($a['titulo']) ?>">
                                     <?= campoCsrf() ?>
                                     <input type="hidden" name="id" value="<?= (int) $a['id'] ?>">
