@@ -14,6 +14,8 @@ define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : '');
 date_default_timezone_set('America/Sao_Paulo');
 
 if (session_status() === PHP_SESSION_NONE) {
+    // cookie da sessão inacessível ao JavaScript e não enviado por outros sites
+    session_set_cookie_params(['httponly' => true, 'samesite' => 'Lax']);
     session_start();
 }
 
