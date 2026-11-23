@@ -6,8 +6,10 @@
      $modalDetalhe  true inclui o modal de experiências e serviços
      $scripts       arquivos de js/ carregados depois de dados.js e main.js
      $acomodacoes   lista vinda do banco, entregue ao JS como ACOMODACOES
+     $base          prefixo dos caminhos ('../' nas páginas do painel em admin/)
    ========================================================================= */
 
+$base = $base ?? '';
 $inspiracao = $inspiracao ?? false;
 $modalDetalhe = $modalDetalhe ?? false;
 $scripts = $scripts ?? [];
@@ -41,8 +43,8 @@ $scripts = $scripts ?? [];
                 <nav aria-labelledby="rodape-hospedagem">
                     <h2 id="rodape-hospedagem">Hospedagem</h2>
                     <ul>
-                        <li><a href="anfitriao.php">Anuncie seu espaço</a></li>
-                        <li><a href="anfitriao.php">Anuncie sua experiência</a></li>
+                        <li><a href="<?= $base ?>anfitriao.php">Anuncie seu espaço</a></li>
+                        <li><a href="<?= $base ?>anfitriao.php">Anuncie sua experiência</a></li>
                         <li><a href="#">AirCover para anfitriões</a></li>
                         <li><a href="#">Recursos para anfitriões</a></li>
                         <li><a href="#">Hospedagem responsável</a></li>
@@ -85,10 +87,10 @@ $scripts = $scripts ?? [];
     <!-- Acomodações cadastradas no painel (lidas do MySQL pelo PHP) -->
     <script>const ACOMODACOES = <?= acomodacoesParaJs($acomodacoes) ?>;</script>
 <?php endif; ?>
-    <script src="js/dados.js"></script>
-    <script src="js/main.js"></script>
+    <script src="<?= $base ?>js/dados.js"></script>
+    <script src="<?= $base ?>js/main.js"></script>
 <?php foreach ($scripts as $script): ?>
-    <script src="js/<?= e($script) ?>.js"></script>
+    <script src="<?= $base ?>js/<?= e($script) ?>.js"></script>
 <?php endforeach; ?>
 </body>
 </html>

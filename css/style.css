@@ -916,6 +916,24 @@ button.chip:hover { border-color: var(--cor-texto); }
 /* Mensagens do servidor (PHP) exibidas abaixo do cabeçalho */
 .mensagem-topo { padding-top: 16px; }
 
+/* Painel administrativo */
+.admin-nome { display: flex; align-items: center; gap: 6px; font-size: var(--tam-pequeno); }
+.painel-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.painel-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-m);
+    background: var(--cor-superficie);
+    transition: box-shadow var(--transicao);
+}
+.painel-card:hover { box-shadow: var(--sombra-leve); }
+.painel-card i { font-size: 1.5rem; color: var(--cor-primaria); }
+.painel-card h3 { font-size: var(--tam-pequeno); font-weight: 500; color: var(--cor-texto-suave); }
+.painel-numero { font-size: 1.75rem; font-weight: 600; }
+
 /* 10. RESPONSIVIDADE ---------------------------------------------------- */
 
 /* Telas médias (tablets/notebooks pequenos): até 1127px */

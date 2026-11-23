@@ -56,6 +56,27 @@ function buscarAcomodacao(int $id): ?array
     return $linha ? montarAcomodacao($linha) : null;
 }
 
+/* ---------- Administradores ---------- */
+
+function buscarAdminPorEmail(string $email): ?array
+{
+    $stmt = conectar()->prepare('SELECT id, nome, email, senha FROM administradores WHERE email = :email');
+    $stmt->execute([':email' => $email]);
+    return $stmt->fetch() ?: null;
+}
+
+/* Totais exibidos no painel */
+function resumoPainel(): array
+{
+    $pdo = conectar();
+    return [
+        'acomodacoes' => (int) $pdo->query('SELECT COUNT(*) FROM acomodacoes')->fetchColumn(),
+        'reservas' => (int) $pdo->query('SELECT COUNT(*) FROM reservas')->fetchColumn(),
+        'usuarios' => (int) $pdo->query('SELECT COUNT(*) FROM usuarios')->fetchColumn(),
+        'faturamento' => (float) $pdo->query('SELECT COALESCE(SUM(total), 0) FROM reservas')->fetchColumn(),
+    ];
+}
+
 /* ---------- Usuários ---------- */
 
 function emailCadastrado(string $email): bool

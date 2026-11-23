@@ -85,6 +85,12 @@ function usuarioLogado(): ?array
     return $_SESSION['usuario'] ?? null;
 }
 
+/* Dados do administrador logado no painel (id, nome, e-mail) ou null */
+function adminLogado(): ?array
+{
+    return $_SESSION['admin'] ?? null;
+}
+
 /* ---------- Entrada de dados (sanitização) ---------- */
 
 /* Lê um texto enviado por POST, sem espaços nas pontas */
