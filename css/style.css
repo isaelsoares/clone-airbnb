@@ -441,6 +441,7 @@ button.chip:hover { border-color: var(--cor-texto); }
     text-decoration: none;
 }
 .menu-dropdown a:hover, .menu-dropdown button:hover { background: var(--cor-fundo-suave); }
+.menu-saudacao { display: block; padding: 12px 16px; font-size: var(--tam-pequeno); }
 .menu-dropdown .separador { height: 1px; margin: 8px 0; background: var(--cor-borda); }
 .contador {
     min-width: 22px;

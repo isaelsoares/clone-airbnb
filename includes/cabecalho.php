@@ -17,6 +17,7 @@ $cabecalho = $cabecalho ?? 'completo';
 $aba = $aba ?? '';
 $busca = $busca ?? ['acao' => 'acomodacoes.php', 'rotulo' => 'Buscar acomodações'];
 $buscaCompacta = $buscaCompacta ?? false;
+$usuario = usuarioLogado();
 
 /* Abas de categoria: chave => [link, ícone, texto] */
 $abas = [
@@ -87,11 +88,21 @@ $abas = [
                     <button type="button" class="icon-btn" data-acao="tema" aria-pressed="false" aria-label="Alternar tema escuro"><i class="bi bi-moon" aria-hidden="true"></i></button>
                     <div class="menu-usuario">
                         <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-usuario" aria-label="Abrir menu">
-                            <i class="bi bi-list" aria-hidden="true"></i><i class="bi bi-person-circle" aria-hidden="true"></i>
+                            <i class="bi bi-list" aria-hidden="true"></i>
+<?php if ($usuario): ?>
+                            <span class="avatar-letra" aria-hidden="true"><?= e(mb_strtoupper(mb_substr($usuario['nome'], 0, 1))) ?></span>
+<?php else: ?>
+                            <i class="bi bi-person-circle" aria-hidden="true"></i>
+<?php endif; ?>
                         </button>
                         <nav class="menu-dropdown" id="menu-usuario" aria-label="Menu do usuário" hidden>
-                            <a href="login.php" data-menu="entrar"><strong>Entrar</strong></a>
-                            <a href="login.php#cadastro" data-menu="cadastrar">Cadastrar-se</a>
+<?php if ($usuario): ?>
+                            <span class="menu-saudacao"><strong>Olá, <?= e(explode(' ', $usuario['nome'])[0]) ?></strong></span>
+                            <a href="sair.php">Sair</a>
+<?php else: ?>
+                            <a href="login.php"><strong>Entrar</strong></a>
+                            <a href="login.php#cadastro">Cadastrar-se</a>
+<?php endif; ?>
                             <div class="separador" role="separator"></div>
                             <a href="favoritos.php">Favoritos <span class="contador contador-favoritos"></span></a>
                             <a href="anfitriao.php">Torne-se um anfitrião</a>

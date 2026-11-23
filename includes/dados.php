@@ -64,6 +64,13 @@ function emailCadastrado(string $email): bool
     return (bool) $stmt->fetchColumn();
 }
 
+function buscarUsuarioPorEmail(string $email): ?array
+{
+    $stmt = conectar()->prepare('SELECT id, nome, email, senha FROM usuarios WHERE email = :email');
+    $stmt->execute([':email' => $email]);
+    return $stmt->fetch() ?: null;
+}
+
 /* Grava o usuário com a senha protegida por password_hash; devolve o id */
 function cadastrarUsuario(array $u, string $senha): int
 {

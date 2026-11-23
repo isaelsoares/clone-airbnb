@@ -90,26 +90,6 @@ function iniciarMenu() {
     document.addEventListener('keydown', evento => {
         if (evento.key === 'Escape' && !menu.hidden) fechar(true);
     });
-
-    // Usuário "logado" (simulação da Parte 2 — dados salvos pelo login.js)
-    const usuario = lerStorage('cloneAirbnb.usuario', null);
-    if (usuario) {
-        const icone = botao.querySelector('.bi-person-circle');
-        if (icone) icone.outerHTML = `<span class="avatar-letra" aria-hidden="true">${escaparHTML(usuario.nome[0].toUpperCase())}</span>`;
-        const entrar = menu.querySelector('[data-menu="entrar"]');
-        const cadastrar = menu.querySelector('[data-menu="cadastrar"]');
-        if (entrar) entrar.innerHTML = `<strong>Olá, ${escaparHTML(usuario.nome.split(' ')[0])}</strong>`;
-        if (cadastrar) {
-            const sair = document.createElement('button');
-            sair.type = 'button';
-            sair.textContent = 'Sair';
-            sair.addEventListener('click', () => {
-                try { localStorage.removeItem('cloneAirbnb.usuario'); } catch (e) { /* ignora */ }
-                window.location.reload();
-            });
-            cadastrar.replaceWith(sair);
-        }
-    }
 }
 
 /* ---------- Busca recolhível (mobile) ---------- */

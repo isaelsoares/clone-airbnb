@@ -3,14 +3,13 @@
    - Alterna entre os formulários de login e cadastro (abas)
    - Mostrar/ocultar senha
    - Validação no cliente com mensagens na página (validacao.js)
-   - Simula a sessão salvando o usuário no localStorage
-     (na Parte 3 isso será feito com $_SESSION no PHP)
+   - Com os dados válidos, envia o formulário ao login.php, que valida de
+     novo no servidor e controla a sessão com $_SESSION
    ========================================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
     const abas = [document.getElementById('aba-entrar'), document.getElementById('aba-cadastro')];
     const forms = [document.getElementById('form-login'), document.getElementById('form-cadastro')];
-    const sucesso = document.getElementById('login-sucesso');
 
     /* ---------- Abas ---------- */
     function selecionarAba(indice, focar = false) {
@@ -43,22 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* Mensagem de sucesso + redirecionamento para a página inicial */
-    function entrar(nome, mensagem) {
-        gravarStorage('cloneAirbnb.usuario', { nome });
-        forms.forEach(f => { f.querySelectorAll('button[type="submit"]').forEach(b => { b.disabled = true; }); });
-        mostrarSucesso(sucesso, mensagem + ' Redirecionando...');
-        setTimeout(() => { window.location.href = 'index.php'; }, 1800);
-    }
-
     /* ---------- Formulário de login ---------- */
-    validarFormulario(forms[0], {
-        aoEnviar: form => {
-            const email = form.elements.email.value.trim();
-            const nome = email.split('@')[0].replace(/[._-]+/g, ' ');
-            entrar(nome.charAt(0).toUpperCase() + nome.slice(1), 'Login realizado com sucesso!');
-        }
-    });
+    validarFormulario(forms[0], { aoEnviar: form => form.submit() });
 
     /* ---------- Formulário de cadastro ---------- */
     const nascimento = document.getElementById('cad-nascimento');

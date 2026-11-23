@@ -3,9 +3,38 @@ require_once 'includes/config.php';
 require_once 'includes/funcoes.php';
 require_once 'includes/dados.php';
 
+// quem já está logado não precisa ver esta página
+if (usuarioLogado()) {
+    redirecionar('index.php');
+}
+
 $abaAtiva = 'entrar';
 $erros = [];
+$erroLogin = '';
+$emailLogin = '';
 $valores = ['nome' => '', 'email' => '', 'telefone' => '', 'nascimento' => ''];
+
+/* ---------- Login de usuário (POST) ---------- */
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && textoPost('acao') === 'entrar') {
+    $emailLogin = mb_strtolower(textoPost('email'));
+    $senha = (string) ($_POST['senha'] ?? '');
+
+    if (!filter_var($emailLogin, FILTER_VALIDATE_EMAIL) || $senha === '') {
+        $erroLogin = 'Informe um e-mail válido e a sua senha.';
+    } else {
+        $usuario = buscarUsuarioPorEmail($emailLogin);
+        // password_verify compara a senha digitada com o hash salvo no banco
+        if ($usuario && password_verify($senha, $usuario['senha'])) {
+            session_regenerate_id(true); // novo id de sessão após o login
+            $_SESSION['usuario'] = ['id' => (int) $usuario['id'], 'nome' => $usuario['nome']];
+            $primeiroNome = explode(' ', $usuario['nome'])[0];
+            definirMensagem('sucesso', "Boas-vindas, {$primeiroNome}!");
+            redirecionar('index.php');
+        }
+        // mesma mensagem para e-mail ou senha errados (não revela quem tem conta)
+        $erroLogin = 'E-mail ou senha incorretos.';
+    }
+}
 
 /* ---------- Cadastro de usuário (POST) ---------- */
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && textoPost('acao') === 'cadastrar') {
@@ -63,14 +92,14 @@ require 'includes/cabecalho.php';
             </div>
 
             <?= exibirMensagem() ?>
-            <p class="alerta alerta-sucesso" id="login-sucesso" role="status" hidden><i class="bi bi-check-circle" aria-hidden="true"></i><span></span></p>
 
-            <!-- Formulário 1: login -->
-            <form class="form-pilha" id="form-login" role="tabpanel" aria-labelledby="aba-entrar" action="index.php" method="post"<?= $abaAtiva === 'entrar' ? '' : ' hidden' ?>>
-                <p class="alerta alerta-erro" data-resumo hidden><i class="bi bi-exclamation-circle" aria-hidden="true"></i><span></span></p>
+            <!-- Formulário 1: login (POST para o próprio login.php) -->
+            <form class="form-pilha" id="form-login" role="tabpanel" aria-labelledby="aba-entrar" action="login.php" method="post"<?= $abaAtiva === 'entrar' ? '' : ' hidden' ?>>
+                <input type="hidden" name="acao" value="entrar">
+                <p class="alerta alerta-erro" data-resumo role="alert"<?= $erroLogin ? '' : ' hidden' ?>><i class="bi bi-exclamation-circle" aria-hidden="true"></i><span><?= e($erroLogin) ?></span></p>
                 <div class="campo">
                     <label for="login-email">E-mail</label>
-                    <input type="email" id="login-email" name="email" required autocomplete="email" placeholder="nome@exemplo.com" data-nome="O e-mail">
+                    <input type="email" id="login-email" name="email" required autocomplete="email" placeholder="nome@exemplo.com" data-nome="O e-mail" value="<?= e($emailLogin) ?>">
                 </div>
                 <div class="campo">
                     <label for="login-senha">Senha</label>

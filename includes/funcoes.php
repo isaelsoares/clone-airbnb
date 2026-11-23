@@ -77,6 +77,14 @@ function invalido(array $erros, string $campo, string $idInput): string
     return empty($erros[$campo]) ? '' : ' aria-invalid="true" aria-describedby="' . e($idInput) . '-erro"';
 }
 
+/* ---------- Sessão do usuário ---------- */
+
+/* Dados do usuário logado (id e nome) ou null */
+function usuarioLogado(): ?array
+{
+    return $_SESSION['usuario'] ?? null;
+}
+
 /* ---------- Entrada de dados (sanitização) ---------- */
 
 /* Lê um texto enviado por POST, sem espaços nas pontas */
