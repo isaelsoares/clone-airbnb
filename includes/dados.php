@@ -4,6 +4,7 @@
    ========================================================================= */
 
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/funcoes.php';
 
 /* ---------- Acomodações ---------- */
 
@@ -83,6 +84,28 @@ function cadastrarUsuario(array $u, string $senha): int
         ':telefone' => $u['telefone'],
         ':nascimento' => $u['nascimento'],
         ':senha' => password_hash($senha, PASSWORD_DEFAULT),
+    ]);
+    return (int) $pdo->lastInsertId();
+}
+
+/* ---------- Reservas ---------- */
+
+/* Grava a reserva feita no checkout; devolve o id */
+function registrarReserva(array $r): int
+{
+    $pdo = conectar();
+    $stmt = $pdo->prepare('INSERT INTO reservas (acomodacao_id, nome, email, cpf, checkin, checkout, hospedes, forma_pagamento, total)
+                           VALUES (:acomodacao, :nome, :email, :cpf, :checkin, :checkout, :hospedes, :forma, :total)');
+    $stmt->execute([
+        ':acomodacao' => $r['acomodacao_id'],
+        ':nome' => $r['nome'],
+        ':email' => $r['email'],
+        ':cpf' => somenteDigitos($r['cpf']),
+        ':checkin' => $r['checkin'],
+        ':checkout' => $r['checkout'],
+        ':hospedes' => $r['hospedes'],
+        ':forma' => $r['forma'],
+        ':total' => $r['total'],
     ]);
     return (int) $pdo->lastInsertId();
 }

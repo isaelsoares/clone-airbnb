@@ -206,6 +206,62 @@ function validarCadastro(array $v, string $senha, string $confirmar, bool $termo
     return $erros;
 }
 
+/* Valida os dados de pagamento do checkout e devolve os erros por campo.
+   O número do cartão e o CVV só são conferidos, nunca gravados. */
+function validarPagamento(array $v, string $cartao, string $cvv): array
+{
+    $erros = [];
+
+    if (!in_array($v['forma'], ['pix', 'cartao'], true)) {
+        $erros['forma'] = 'Selecione uma forma de pagamento.';
+    } elseif ($v['forma'] === 'cartao') {
+        if (!preg_match('/^\d{16}$/', $cartao)) {
+            $erros['cartao'] = 'O cartão deve ter 16 dígitos.';
+        }
+        if (!preg_match('/^\d{4}-(0[1-9]|1[0-2])$/', $v['validade'])) {
+            $erros['validade'] = 'Informe a validade do cartão.';
+        } elseif ($v['validade'] < date('Y-m')) {
+            $erros['validade'] = 'Este cartão está vencido.';
+        }
+        if (!preg_match('/^\d{3,4}$/', $cvv)) {
+            $erros['cvv'] = 'O CVV tem 3 ou 4 dígitos.';
+        }
+        $parcelas = filter_var($v['parcelas'], FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 12]]);
+        if ($parcelas === false) {
+            $erros['parcelas'] = 'Escolha de 1 a 12 parcelas.';
+        }
+    }
+
+    $tamanhoNome = mb_strlen($v['nome']);
+    if ($tamanhoNome < 5 || $tamanhoNome > 80 || !preg_match("/^[\p{L}' ]+ [\p{L}' ]+$/u", $v['nome'])) {
+        $erros['nome'] = 'Informe nome e sobrenome.';
+    }
+
+    if (!preg_match('/^\d{3}\.\d{3}\.\d{3}-\d{2}$/', $v['cpf'])) {
+        $erros['cpf'] = 'Use o formato 000.000.000-00.';
+    } elseif (!cpfValido($v['cpf'])) {
+        $erros['cpf'] = 'CPF inválido. Confira os números digitados.';
+    }
+
+    if (!dataValida($v['nascimento']) || $v['nascimento'] < '1900-01-01') {
+        $erros['nascimento'] = 'Informe uma data de nascimento válida.';
+    } elseif (idade($v['nascimento']) < 18) {
+        $erros['nascimento'] = 'O titular da reserva precisa ter 18 anos ou mais.';
+    }
+
+    if (!filter_var($v['email'], FILTER_VALIDATE_EMAIL) || mb_strlen($v['email']) > 120) {
+        $erros['email'] = 'Informe um e-mail válido (ex.: nome@dominio.com).';
+    }
+
+    return $erros;
+}
+
+/* Código exibido ao hóspede: 15 -> "HM000015" */
+function codigoReserva(int $id): string
+{
+    return 'HM' . str_pad((string) $id, 6, '0', STR_PAD_LEFT);
+}
+
 /* =========================================================================
    REGRAS DE NEGÓCIO (as mesmas do js/dados.js, agora validadas no servidor)
    RN1 — O checkout deve ser posterior ao check-in, o check-in não pode ser
