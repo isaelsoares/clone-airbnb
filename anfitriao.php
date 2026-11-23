@@ -1,33 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Configure seu anúncio e comece a receber hóspedes.">
-    <title>Torne-se um anfitrião | Clone Airbnb</title>
-    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body data-pagina="anfitriao">
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<?php
+require_once 'includes/config.php';
+require_once 'includes/funcoes.php';
 
-    <!-- ===== CABEÇALHO ===== -->
-    <header>
-        <div class="container anfitriao-topo">
-            <a href="index.php" class="logo" aria-label="Clone Airbnb — página inicial">
-                    <img src="img/logos/logo-airbnb.png" alt="" width="100" height="32">
-                </a>
-            <nav aria-label="Ações do anfitrião" style="display:flex;gap:8px">
-                <button type="button" class="icon-btn" data-acao="tema" aria-pressed="false" aria-label="Alternar tema escuro"><i class="bi bi-moon" aria-hidden="true"></i></button>
-                <a href="index.php" class="btn btn-secundario btn-pequeno">Sair</a>
-            </nav>
-        </div>
-    </header>
-
+$titulo = 'Torne-se um anfitrião | Clone Airbnb';
+$descricao = 'Configure seu anúncio e comece a receber hóspedes.';
+$pagina = 'anfitriao';
+$cabecalho = 'anfitriao';
+require 'includes/cabecalho.php';
+?>
     <!-- ===== CONTEÚDO ===== -->
     <main id="conteudo" class="container">
         <section class="anfitriao-hero" aria-labelledby="titulo-anfitriao">
@@ -45,58 +25,6 @@
             </div>
         </section>
     </main>
-
-    <!-- ===== RODAPÉ ===== -->
-    <footer class="rodape" id="rodape">
-        <div class="container">
-            <div class="rodape-colunas">
-                <nav aria-labelledby="rodape-atendimento">
-                    <h2 id="rodape-atendimento">Atendimento</h2>
-                    <ul>
-                        <li><a href="#">Central de Ajuda</a></li>
-                        <li><a href="#">AirCover</a></li>
-                        <li><a href="#">Antidiscriminação</a></li>
-                        <li><a href="#">Apoio à pessoa com deficiência</a></li>
-                        <li><a href="#">Opções de cancelamento</a></li>
-                    </ul>
-                </nav>
-                <nav aria-labelledby="rodape-hospedagem">
-                    <h2 id="rodape-hospedagem">Hospedagem</h2>
-                    <ul>
-                        <li><a href="anfitriao.php">Anuncie seu espaço</a></li>
-                        <li><a href="anfitriao.php">Anuncie sua experiência</a></li>
-                        <li><a href="#">AirCover para anfitriões</a></li>
-                        <li><a href="#">Recursos para anfitriões</a></li>
-                        <li><a href="#">Hospedagem responsável</a></li>
-                    </ul>
-                </nav>
-                <nav aria-labelledby="rodape-empresa">
-                    <h2 id="rodape-empresa">Airbnb</h2>
-                    <ul>
-                        <li><a href="#">Newsroom</a></li>
-                        <li><a href="#">Carreiras</a></li>
-                        <li><a href="#">Investidores</a></li>
-                        <li><a href="#">Locais emergenciais Airbnb.org</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="rodape-base">
-                <p>© <span data-ano>2026</span> Clone Airbnb · Privacidade · Termos</p>
-                <div class="redes">
-                    <span><i class="bi bi-globe" aria-hidden="true"></i> Português (BR)</span>
-                    <span>R$ BRL</span>
-                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
-                    <a href="#" aria-label="X (Twitter)"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-            <p class="aviso-educacional">
-                <i class="bi bi-mortarboard" aria-hidden="true"></i>
-                Este site é um <strong>clone desenvolvido para fins educacionais</strong> (Desenvolvimento Web I — IFC Campus Concórdia),
-                sem qualquer vínculo com a Airbnb, Inc. Todos os usuários, anúncios, avaliações e valores são fictícios.
-            </p>
-        </div>
-    </footer>
 
     <!-- Modal "Confirme seu endereço" (formulário de cadastro do anúncio) -->
     <dialog class="modal" id="modal-endereco" aria-labelledby="titulo-endereco">
@@ -170,9 +98,6 @@
         </form>
     </dialog>
 
-    <script src="js/dados.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/validacao.js"></script>
-    <script src="js/anfitriao.js"></script>
-</body>
-</html>
+<?php
+$scripts = ['validacao', 'anfitriao'];
+require 'includes/rodape.php';
