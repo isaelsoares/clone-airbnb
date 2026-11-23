@@ -1,0 +1,2 @@
+# Bloqueia acesso pelo navegador ao script SQL, ao Git e aos arquivos do Docker
+RedirectMatch 404 ^/(.*/)?(\.git|database|Dockerfile|docker-compose\.yml)(/|$)

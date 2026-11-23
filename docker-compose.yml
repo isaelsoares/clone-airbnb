@@ -1,23 +1,27 @@
 # Sobe o site em http://localhost:8080 e o MariaDB já com o banco criado.
 # Uso: docker compose up -d   |   apagar o banco: docker compose down -v
+# Senhas apenas para desenvolvimento local; não reutilize em hospedagem.
 services:
   web:
     build: .
     ports:
-      - "8080:80"
+      - "127.0.0.1:8080:80"
     volumes:
       - ./:/var/www/html
     environment:
       DB_HOST: db
       DB_NAME: clone_airbnb
-      DB_USER: root
-      DB_PASS: root
+      DB_USER: airbnb
+      DB_PASS: airbnb_dev
     depends_on:
       - db
   db:
     image: mariadb:11
     environment:
-      MARIADB_ROOT_PASSWORD: root
+      MARIADB_RANDOM_ROOT_PASSWORD: "1"
+      MARIADB_DATABASE: clone_airbnb
+      MARIADB_USER: airbnb
+      MARIADB_PASSWORD: airbnb_dev
     volumes:
       - ./database:/docker-entrypoint-initdb.d
       - dados:/var/lib/mysql
