@@ -2,6 +2,12 @@
 require_once 'includes/config.php';
 require_once 'includes/funcoes.php';
 
+// área restrita: só usuários logados podem anunciar
+if (!usuarioLogado()) {
+    definirMensagem('info', 'Entre na sua conta para anunciar seu espaço.');
+    redirecionar('login.php');
+}
+
 $titulo = 'Torne-se um anfitrião | Clone Airbnb';
 $descricao = 'Configure seu anúncio e comece a receber hóspedes.';
 $pagina = 'anfitriao';

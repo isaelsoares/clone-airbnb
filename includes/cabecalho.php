@@ -53,7 +53,7 @@ $abas = [
             </a>
             <nav aria-label="Ações do anfitrião" style="display:flex;gap:8px">
                 <button type="button" class="icon-btn" data-acao="tema" aria-pressed="false" aria-label="Alternar tema escuro"><i class="bi bi-moon" aria-hidden="true"></i></button>
-                <a href="index.php" class="btn btn-secundario btn-pequeno">Sair</a>
+                <a href="sair.php" class="btn btn-secundario btn-pequeno">Sair</a>
             </nav>
         </div>
     </header>
