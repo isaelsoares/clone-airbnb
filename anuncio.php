@@ -1,8 +1,18 @@
 <?php
 require_once 'includes/config.php';
 require_once 'includes/funcoes.php';
+require_once 'includes/dados.php';
 
-$titulo = 'Anúncio | Clone Airbnb';
+// anuncio.php?id=N — valida o id e busca a acomodação no banco
+$id = inteiro(INPUT_GET, 'id', 1);
+$acomodacao = $id ? buscarAcomodacao($id) : null;
+if (!$acomodacao) {
+    definirMensagem('erro', 'Anúncio não encontrado. Escolha uma das acomodações abaixo.');
+    redirecionar('acomodacoes.php');
+}
+$acomodacoes = [$acomodacao];
+
+$titulo = $acomodacao['titulo'] . ' | Clone Airbnb';
 $descricao = 'Detalhes da acomodação, fotos, comodidades, avaliações e reserva.';
 $pagina = 'anuncio';
 $cabecalho = 'compacto';

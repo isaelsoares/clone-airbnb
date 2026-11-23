@@ -126,3 +126,6 @@ $abas = [
         </div>
     </header>
 <?php endif; ?>
+<?php if ($mensagem = exibirMensagem()): ?>
+    <div class="container mensagem-topo"><?= $mensagem ?></div>
+<?php endif; ?>

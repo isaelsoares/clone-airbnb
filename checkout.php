@@ -1,6 +1,9 @@
 <?php
 require_once 'includes/config.php';
 require_once 'includes/funcoes.php';
+require_once 'includes/dados.php';
+
+$acomodacoes = listarAcomodacoes();
 
 $titulo = 'Confirmar e pagar | Clone Airbnb';
 $descricao = 'Confirme e pague sua reserva.';

@@ -5,6 +5,7 @@
      $inspiracao    true mostra "Inspiração para viagens futuras"
      $modalDetalhe  true inclui o modal de experiências e serviços
      $scripts       arquivos de js/ carregados depois de dados.js e main.js
+     $acomodacoes   lista vinda do banco, entregue ao JS como ACOMODACOES
    ========================================================================= */
 
 $inspiracao = $inspiracao ?? false;
@@ -80,6 +81,10 @@ $scripts = $scripts ?? [];
     <dialog class="modal" id="modal-detalhe" aria-labelledby="modal-detalhe-titulo"></dialog>
 <?php endif; ?>
 
+<?php if (isset($acomodacoes)): ?>
+    <!-- Acomodações cadastradas no painel (lidas do MySQL pelo PHP) -->
+    <script>const ACOMODACOES = <?= acomodacoesParaJs($acomodacoes) ?>;</script>
+<?php endif; ?>
     <script src="js/dados.js"></script>
     <script src="js/main.js"></script>
 <?php foreach ($scripts as $script): ?>

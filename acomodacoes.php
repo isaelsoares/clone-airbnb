@@ -1,6 +1,13 @@
 <?php
 require_once 'includes/config.php';
 require_once 'includes/funcoes.php';
+require_once 'includes/dados.php';
+
+$acomodacoes = listarAcomodacoes();
+
+// limite do filtro de preço acompanha a maior diária cadastrada (múltiplo de 50)
+$maiorDiaria = max(array_merge([1500], array_column($acomodacoes, 'diaria')));
+$precoMaximo = (int) (ceil($maiorDiaria / 50) * 50);
 
 $titulo = 'Acomodações | Clone Airbnb';
 $descricao = 'Busque e filtre acomodações por destino, categoria e preço.';
@@ -28,8 +35,8 @@ require 'includes/cabecalho.php';
                 </div>
             </fieldset>
             <div class="filtro-preco">
-                <label for="filtro-preco">Preço máximo por noite: <output id="saida-preco" for="filtro-preco">R$ 1.500,00</output></label>
-                <input type="range" id="filtro-preco" name="preco" min="300" max="1500" step="50" value="1500">
+                <label for="filtro-preco">Preço máximo por noite: <output id="saida-preco" for="filtro-preco"><?= formatarMoeda($precoMaximo) ?></output></label>
+                <input type="range" id="filtro-preco" name="preco" min="300" max="<?= $precoMaximo ?>" step="50" value="<?= $precoMaximo ?>">
             </div>
             <div class="filtro-ordem">
                 <label for="filtro-ordem">Ordenar por</label><br>

@@ -1,7 +1,7 @@
 /* =========================================================================
    dados.js — Dados fictícios do clone e regras de negócio
-   Todo o conteúdo dinâmico das páginas é gerado a partir destes arrays de
-   objetos (na Parte 3 eles serão substituídos por consultas ao MySQL).
+   Experiências, serviços e destinos continuam em arrays de objetos; as
+   acomodações vêm do banco de dados (cadastradas no painel administrativo).
    ========================================================================= */
 
 /* Comodidades possíveis: nome -> ícone do Bootstrap Icons */
@@ -20,73 +20,8 @@ const ICONES_COMODIDADES = {
     'Detector de fumaça': 'bi-bell'
 };
 
-/* Acomodações (entidade principal do catálogo) */
-const ACOMODACOES = [
-    { id: 1, titulo: 'Apto 106 - Porto de Galinhas - Centro', tipo: 'Apartamento', cidade: 'Ipojuca', estado: 'Pernambuco', categorias: ['praia', 'piscina'], diaria: 816.5, nota: 5.0, avaliacoes: 6, capacidade: 4, quartos: 1, camas: 2, banheiros: 1, minNoites: 2, selo: 'Preferido dos hóspedes', anfitriao: 'Catalina', anfitriaoDesde: 2026,
-      imagens: ['casa-03', 'casa-01', 'casa-15', 'casa-16', 'casa-21'],
-      descricao: 'Apartamento novo no coração do Porto, a 200 metros do mar e a 2 minutos da Rua das Sombrinhas. Ambientes modernos, iluminados e confortáveis, com piscina e área gourmet para aproveitar o melhor de Porto de Galinhas.',
-      comodidades: ['Cozinha', 'Wi-Fi', 'Estacionamento gratuito', 'Piscina', 'TV', 'Ar-condicionado', 'Detector de fumaça'] },
-    { id: 2, titulo: 'Bangalô sobre o mar em Muro Alto', tipo: 'Bangalô', cidade: 'Ipojuca', estado: 'Pernambuco', categorias: ['praia'], diaria: 1290, nota: 4.95, avaliacoes: 41, capacidade: 2, quartos: 1, camas: 1, banheiros: 1, minNoites: 3, selo: 'Preferido dos hóspedes', anfitriao: 'Rodrigo', anfitriaoDesde: 2019,
-      imagens: ['casa-06', 'casa-23', 'casa-14', 'casa-02', 'casa-20'],
-      descricao: 'Bangalô de palha com deck privativo sobre as águas mornas de Muro Alto. Ideal para casais que buscam sossego e pôr do sol inesquecível.',
-      comodidades: ['Wi-Fi', 'Vista para o mar', 'Ar-condicionado', 'Banheira de hidromassagem', 'TV'] },
-    { id: 3, titulo: 'Pousada com piscina entre coqueiros', tipo: 'Pousada', cidade: 'Ipojuca', estado: 'Pernambuco', categorias: ['praia', 'piscina'], diaria: 540, nota: 4.82, avaliacoes: 128, capacidade: 3, quartos: 1, camas: 2, banheiros: 1, minNoites: 1, selo: null, anfitriao: 'Helena', anfitriaoDesde: 2017,
-      imagens: ['casa-07', 'casa-16', 'casa-01', 'casa-15', 'casa-21'],
-      descricao: 'Quartos aconchegantes ao redor de uma grande piscina cercada de coqueiros, com café da manhã regional incluso.',
-      comodidades: ['Wi-Fi', 'Piscina', 'Ar-condicionado', 'TV', 'Estacionamento gratuito'] },
-    { id: 4, titulo: 'Hotel Lagoa Azul — quarto superior', tipo: 'Hotel', cidade: 'Ipojuca', estado: 'Pernambuco', categorias: ['hotel', 'piscina'], diaria: 690, nota: 4.71, avaliacoes: 312, capacidade: 2, quartos: 1, camas: 1, banheiros: 1, minNoites: 1, selo: null, anfitriao: 'Hotel Lagoa Azul', anfitriaoDesde: 2015,
-      imagens: ['casa-09', 'casa-23', 'casa-16', 'casa-14', 'casa-02'],
-      descricao: 'Hotel boutique com piscina de borda infinita iluminada à noite e restaurante com frutos do mar.',
-      comodidades: ['Wi-Fi', 'Piscina', 'Ar-condicionado', 'TV', 'Detector de fumaça'] },
-    { id: 5, titulo: 'Casa branca com piscina a 100 m da praia', tipo: 'Casa', cidade: 'Arraial do Cabo', estado: 'Rio de Janeiro', categorias: ['praia', 'piscina'], diaria: 980, nota: 4.97, avaliacoes: 54, capacidade: 8, quartos: 4, camas: 5, banheiros: 3, minNoites: 3, selo: 'Preferido dos hóspedes', anfitriao: 'Marcos', anfitriaoDesde: 2020,
-      imagens: ['casa-05', 'casa-21', 'casa-17', 'casa-16', 'casa-20'],
-      descricao: 'Casa moderna para a família toda, com piscina privativa e a poucos passos da Prainha. Cozinha completa e churrasqueira.',
-      comodidades: ['Cozinha', 'Wi-Fi', 'Estacionamento gratuito', 'Piscina', 'TV', 'Ar-condicionado', 'Lava-louças'] },
-    { id: 6, titulo: 'Casa com espreguiçadeiras e vista', tipo: 'Casa', cidade: 'Arraial do Cabo', estado: 'Rio de Janeiro', categorias: ['praia', 'piscina'], diaria: 750, nota: 4.88, avaliacoes: 23, capacidade: 6, quartos: 3, camas: 3, banheiros: 2, minNoites: 2, selo: null, anfitriao: 'Juliana', anfitriaoDesde: 2021,
-      imagens: ['casa-12', 'casa-14', 'casa-15', 'casa-23', 'casa-01'],
-      descricao: 'Arquitetura contemporânea com piscina e solário. Fica entre a Praia Grande e o centro histórico.',
-      comodidades: ['Cozinha', 'Wi-Fi', 'Piscina', 'TV', 'Espaço de trabalho'] },
-    { id: 7, titulo: 'Resort Pôr do Sol — suíte com varanda', tipo: 'Hotel', cidade: 'Arraial do Cabo', estado: 'Rio de Janeiro', categorias: ['hotel', 'praia', 'piscina'], diaria: 870, nota: 4.76, avaliacoes: 205, capacidade: 3, quartos: 1, camas: 2, banheiros: 1, minNoites: 1, selo: null, anfitriao: 'Resort Pôr do Sol', anfitriaoDesde: 2016,
-      imagens: ['casa-24', 'casa-23', 'casa-16', 'casa-02', 'casa-14'],
-      descricao: 'Resort à beira-mar com piscina espelhada, palmeiras e vista para o entardecer.',
-      comodidades: ['Wi-Fi', 'Piscina', 'Ar-condicionado', 'TV', 'Vista para o mar'] },
-    { id: 8, titulo: 'Casa de dois andares com jardim', tipo: 'Casa', cidade: 'Arraial do Cabo', estado: 'Rio de Janeiro', categorias: ['piscina'], diaria: 1150, nota: 4.9, avaliacoes: 17, capacidade: 10, quartos: 5, camas: 6, banheiros: 4, minNoites: 3, selo: 'Preferido dos hóspedes', anfitriao: 'Paulo', anfitriaoDesde: 2018,
-      imagens: ['casa-10', 'casa-21', 'casa-17', 'casa-20', 'casa-16'],
-      descricao: 'Espaço amplo para grupos, com piscina, gramado e varanda gourmet.',
-      comodidades: ['Cozinha', 'Wi-Fi', 'Estacionamento gratuito', 'Piscina', 'TV', 'Lava-louças'] },
-    { id: 9, titulo: 'Chalé de madeira iluminado', tipo: 'Chalé', cidade: 'Gramado', estado: 'Rio Grande do Sul', categorias: ['chale'], diaria: 620, nota: 4.98, avaliacoes: 88, capacidade: 4, quartos: 2, camas: 2, banheiros: 1, minNoites: 2, selo: 'Preferido dos hóspedes', anfitriao: 'Bruna', anfitriaoDesde: 2019,
-      imagens: ['casa-04', 'casa-20', 'casa-16', 'casa-15', 'casa-01'],
-      descricao: 'Chalé aconchegante com lareira e janelas amplas para o bosque, a 5 minutos da Rua Coberta.',
-      comodidades: ['Cozinha', 'Wi-Fi', 'Lareira', 'TV', 'Estacionamento gratuito'] },
-    { id: 10, titulo: 'Cabana à beira do lago', tipo: 'Cabana', cidade: 'Gramado', estado: 'Rio Grande do Sul', categorias: ['chale'], diaria: 710, nota: 4.93, avaliacoes: 35, capacidade: 4, quartos: 2, camas: 3, banheiros: 1, minNoites: 2, selo: null, anfitriao: 'Eduardo', anfitriaoDesde: 2022,
-      imagens: ['casa-19', 'casa-14', 'casa-23', 'casa-17', 'casa-20'],
-      descricao: 'Cabana cercada de pinheiros, com deck sobre o lago e banheira aquecida para as noites frias da serra.',
-      comodidades: ['Cozinha', 'Wi-Fi', 'Lareira', 'Banheira de hidromassagem', 'Estacionamento gratuito'] },
-    { id: 11, titulo: 'Casa de tijolos no bosque', tipo: 'Casa', cidade: 'Gramado', estado: 'Rio Grande do Sul', categorias: ['chale'], diaria: 530, nota: 4.84, avaliacoes: 62, capacidade: 5, quartos: 2, camas: 3, banheiros: 2, minNoites: 2, selo: null, anfitriao: 'Ingrid', anfitriaoDesde: 2018,
-      imagens: ['casa-22', 'casa-21', 'casa-15', 'casa-16', 'casa-02'],
-      descricao: 'Casa charmosa em estilo europeu, rodeada de árvores e com jardim de hortênsias.',
-      comodidades: ['Cozinha', 'Wi-Fi', 'Lareira', 'TV', 'Espaço de trabalho'] },
-    { id: 12, titulo: 'Cabana no campo ao pôr do sol', tipo: 'Cabana', cidade: 'Gramado', estado: 'Rio Grande do Sul', categorias: ['chale'], diaria: 450, nota: 4.79, avaliacoes: 29, capacidade: 2, quartos: 1, camas: 1, banheiros: 1, minNoites: 1, selo: null, anfitriao: 'Tiago', anfitriaoDesde: 2023,
-      imagens: ['casa-18', 'casa-20', 'casa-16', 'casa-14', 'casa-01'],
-      descricao: 'Refúgio minimalista no meio dos campos de cima da serra, perfeito para desconectar.',
-      comodidades: ['Wi-Fi', 'Lareira', 'Cozinha', 'Estacionamento gratuito'] },
-    { id: 13, titulo: 'Chalé com piscina e deck', tipo: 'Chalé', cidade: 'Gramado', estado: 'Rio Grande do Sul', categorias: ['chale', 'piscina'], diaria: 890, nota: 4.91, avaliacoes: 47, capacidade: 6, quartos: 3, camas: 4, banheiros: 2, minNoites: 2, selo: 'Preferido dos hóspedes', anfitriao: 'Laura', anfitriaoDesde: 2020,
-      imagens: ['casa-08', 'casa-21', 'casa-17', 'casa-23', 'casa-16'],
-      descricao: 'Chalé de madeira com piscina aquecida e espreguiçadeiras no deck.',
-      comodidades: ['Cozinha', 'Wi-Fi', 'Piscina', 'Lareira', 'TV', 'Estacionamento gratuito'] },
-    { id: 14, titulo: 'Casa moderna com piscina em Jurerê', tipo: 'Casa', cidade: 'Florianópolis', estado: 'Santa Catarina', categorias: ['praia', 'piscina'], diaria: 1450, nota: 4.96, avaliacoes: 31, capacidade: 8, quartos: 4, camas: 4, banheiros: 4, minNoites: 3, selo: 'Preferido dos hóspedes', anfitriao: 'Fernanda', anfitriaoDesde: 2017,
-      imagens: ['casa-11', 'casa-21', 'casa-17', 'casa-16', 'casa-14'],
-      descricao: 'Casa de alto padrão a duas quadras da praia de Jurerê Internacional.',
-      comodidades: ['Cozinha', 'Wi-Fi', 'Estacionamento gratuito', 'Piscina', 'TV', 'Ar-condicionado', 'Lava-louças'] },
-    { id: 15, titulo: 'Casa contemporânea na Lagoa', tipo: 'Casa', cidade: 'Florianópolis', estado: 'Santa Catarina', categorias: ['urbano'], diaria: 760, nota: 4.87, avaliacoes: 44, capacidade: 6, quartos: 3, camas: 3, banheiros: 2, minNoites: 2, selo: null, anfitriao: 'Diego', anfitriaoDesde: 2019,
-      imagens: ['casa-13', 'casa-20', 'casa-15', 'casa-23', 'casa-01'],
-      descricao: 'Casa de linhas modernas com jardim e árvore centenária, perto dos restaurantes da Lagoa da Conceição.',
-      comodidades: ['Cozinha', 'Wi-Fi', 'TV', 'Espaço de trabalho', 'Estacionamento gratuito'] },
-    { id: 16, titulo: 'Loft claro perto da Beira-Mar', tipo: 'Apartamento', cidade: 'Florianópolis', estado: 'Santa Catarina', categorias: ['urbano'], diaria: 380, nota: 4.74, avaliacoes: 96, capacidade: 2, quartos: 1, camas: 1, banheiros: 1, minNoites: 1, selo: null, anfitriao: 'Camila', anfitriaoDesde: 2021,
-      imagens: ['casa-14', 'casa-02', 'casa-15', 'casa-16', 'casa-20'],
-      descricao: 'Loft compacto e iluminado, ideal para viagens a trabalho, próximo à Avenida Beira-Mar Norte.',
-      comodidades: ['Cozinha', 'Wi-Fi', 'TV', 'Ar-condicionado', 'Espaço de trabalho'] }
-];
+/* Acomodações: lidas do MySQL pelo PHP e entregues como a constante
+   ACOMODACOES (veja includes/rodape.php e o painel em admin/) */
 
 /* Experiências */
 const EXPERIENCIAS = [

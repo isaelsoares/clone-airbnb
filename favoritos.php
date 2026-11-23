@@ -1,6 +1,9 @@
 <?php
 require_once 'includes/config.php';
 require_once 'includes/funcoes.php';
+require_once 'includes/dados.php';
+
+$acomodacoes = listarAcomodacoes();
 
 $titulo = 'Favoritos | Clone Airbnb';
 $descricao = 'Acomodações, experiências e serviços salvos nos favoritos.';

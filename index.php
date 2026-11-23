@@ -1,6 +1,9 @@
 <?php
 require_once 'includes/config.php';
 require_once 'includes/funcoes.php';
+require_once 'includes/dados.php';
+
+$acomodacoes = listarAcomodacoes();
 
 $titulo = 'Clone Airbnb | Casas de temporada, cabanas, casas de praia e muito mais';
 $descricao = 'Clone educacional do Airbnb: encontre acomodações, experiências e serviços.';

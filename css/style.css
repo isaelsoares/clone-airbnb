@@ -912,6 +912,9 @@ button.chip:hover { border-color: var(--cor-texto); }
 .confirmacao { text-align: center; align-items: center; padding: 48px 24px; }
 .confirmacao i { font-size: 3.5rem; color: var(--cor-sucesso); }
 
+/* Mensagens do servidor (PHP) exibidas abaixo do cabeçalho */
+.mensagem-topo { padding-top: 16px; }
+
 /* 10. RESPONSIVIDADE ---------------------------------------------------- */
 
 /* Telas médias (tablets/notebooks pequenos): até 1127px */
