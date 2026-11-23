@@ -31,7 +31,7 @@
       <div class="container">
         <div class="header-topo">
           <a
-            href="index.html"
+            href="index.php"
             class="logo"
             aria-label="Clone Airbnb — página inicial"
           >
@@ -53,25 +53,25 @@
           </button>
 
           <nav class="abas" aria-label="Categorias">
-            <a href="index.html" class="aba" aria-current="page"
+            <a href="index.php" class="aba" aria-current="page"
               ><i class="bi bi-grid" aria-hidden="true"></i><span>Tudo</span></a
             >
-            <a href="acomodacoes.html" class="aba"
+            <a href="acomodacoes.php" class="aba"
               ><i class="bi bi-house-door" aria-hidden="true"></i
               ><span>Acomodações</span></a
             >
-            <a href="experiencias.html" class="aba"
+            <a href="experiencias.php" class="aba"
               ><i class="bi bi-balloon" aria-hidden="true"></i
               ><span>Experiências</span></a
             >
-            <a href="servicos.html" class="aba"
+            <a href="servicos.php" class="aba"
               ><i class="bi bi-bell" aria-hidden="true"></i
               ><span>Serviços</span></a
             >
           </nav>
 
           <div class="header-acoes">
-            <a href="anfitriao.html" class="link-anfitriao"
+            <a href="anfitriao.php" class="link-anfitriao"
               >Torne-se um anfitrião</a
             >
             <button
@@ -100,17 +100,17 @@
                 aria-label="Menu do usuário"
                 hidden
               >
-                <a href="login.html" data-menu="entrar"
+                <a href="login.php" data-menu="entrar"
                   ><strong>Entrar</strong></a
                 >
-                <a href="login.html#cadastro" data-menu="cadastrar"
+                <a href="login.php#cadastro" data-menu="cadastrar"
                   >Cadastrar-se</a
                 >
                 <div class="separador" role="separator"></div>
-                <a href="favoritos.html"
+                <a href="favoritos.php"
                   >Favoritos <span class="contador contador-favoritos"></span
                 ></a>
-                <a href="anfitriao.html">Torne-se um anfitrião</a>
+                <a href="anfitriao.php">Torne-se um anfitrião</a>
                 <a href="#rodape">Central de Ajuda</a>
               </nav>
             </div>
@@ -121,7 +121,7 @@
         <form
           class="busca"
           id="form-busca"
-          action="acomodacoes.html"
+          action="acomodacoes.php"
           method="get"
           role="search"
           aria-label="Buscar acomodações"
@@ -223,8 +223,8 @@
           <nav aria-labelledby="rodape-hospedagem">
             <h2 id="rodape-hospedagem">Hospedagem</h2>
             <ul>
-              <li><a href="anfitriao.html">Anuncie seu espaço</a></li>
-              <li><a href="anfitriao.html">Anuncie sua experiência</a></li>
+              <li><a href="anfitriao.php">Anuncie seu espaço</a></li>
+              <li><a href="anfitriao.php">Anuncie sua experiência</a></li>
               <li><a href="#">AirCover para anfitriões</a></li>
               <li><a href="#">Recursos para anfitriões</a></li>
               <li><a href="#">Hospedagem responsável</a></li>

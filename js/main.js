@@ -188,11 +188,11 @@ function botaoFavorito(chave, nome) {
         <i class="bi ${marcado ? 'bi-heart-fill' : 'bi-heart'}" aria-hidden="true"></i></button>`;
 }
 
-/* Card de acomodação: leva para anuncio.html?id=N */
+/* Card de acomodação: leva para anuncio.php?id=N */
 function cardAcomodacao(a) {
     return `
     <article class="card">
-        <a class="card-link" href="anuncio.html?id=${a.id}">
+        <a class="card-link" href="anuncio.php?id=${a.id}">
             <div class="card-midia">
                 <img src="img/acomodacoes/${a.imagens[0]}.jpg" alt="Foto de ${escaparHTML(a.titulo)}, ${a.tipo.toLowerCase()} em ${a.cidade}" loading="lazy" width="400" height="400">
                 ${a.selo ? `<span class="badge">${a.selo}</span>` : ''}
@@ -278,7 +278,7 @@ function iniciarInspiracao() {
 
     const mostrar = nome => {
         lista.innerHTML = INSPIRACAO[nome].map(([cidade, desc]) =>
-            `<li><a href="acomodacoes.html?onde=${encodeURIComponent(cidade)}" style="text-decoration:none"><strong>${cidade}</strong><span class="texto-suave">${desc}</span></a></li>`
+            `<li><a href="acomodacoes.php?onde=${encodeURIComponent(cidade)}" style="text-decoration:none"><strong>${cidade}</strong><span class="texto-suave">${desc}</span></a></li>`
         ).join('');
     };
     mostrar(Object.keys(INSPIRACAO)[0]);

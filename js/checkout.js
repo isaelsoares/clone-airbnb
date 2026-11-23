@@ -1,6 +1,6 @@
 /* =========================================================================
    checkout.js — "Confirmar e pagar"
-   Recebe a reserva pela URL (GET vindo do anuncio.html), revalida as regras
+   Recebe a reserva pela URL (GET vindo do anuncio.php), revalida as regras
    de negócio, monta o resumo e valida o formulário de pagamento.
    ========================================================================= */
 
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkout: params.get('checkout') || paraISO(fimPadrao),
         hospedes: Number(params.get('hospedes')) || 1
     };
-    const linkAnuncio = `anuncio.html?id=${acomodacao.id}&checkin=${reserva.checkin}&checkout=${reserva.checkout}&hospedes=${reserva.hospedes}`;
+    const linkAnuncio = `anuncio.php?id=${acomodacao.id}&checkin=${reserva.checkin}&checkout=${reserva.checkout}&hospedes=${reserva.hospedes}`;
     ['voltar-anuncio', 'alterar-datas', 'alterar-hospedes'].forEach(id => { document.getElementById(id).href = linkAnuncio; });
 
     /* ---------- Resumo ---------- */

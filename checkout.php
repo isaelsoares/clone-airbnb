@@ -19,7 +19,7 @@
     <header class="site-header">
         <div class="container">
             <div class="header-topo">
-                <a href="index.html" class="logo" aria-label="Clone Airbnb — página inicial">
+                <a href="index.php" class="logo" aria-label="Clone Airbnb — página inicial">
                     <img src="img/logos/logo-airbnb.png" alt="" width="100" height="32">
                 </a>
             </div>
@@ -35,7 +35,7 @@
 
         <div class="checkout-colunas" id="checkout-colunas">
             <!-- Formulário de pagamento -->
-            <form id="form-pagamento" action="checkout.html" method="post" class="form-pilha" style="gap:16px">
+            <form id="form-pagamento" action="checkout.php" method="post" class="form-pilha" style="gap:16px">
                 <p class="alerta alerta-erro" data-resumo hidden><i class="bi bi-exclamation-circle" aria-hidden="true"></i><span></span></p>
 
                 <section class="etapa ativa" aria-labelledby="etapa-1">
@@ -153,7 +153,7 @@
             <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
             <h2 id="titulo-confirmacao">Reserva confirmada!</h2>
             <p id="texto-confirmacao"></p>
-            <a href="index.html" class="btn btn-escuro">Voltar ao início</a>
+            <a href="index.php" class="btn btn-escuro">Voltar ao início</a>
         </section>
     </main>
 
@@ -174,8 +174,8 @@
                 <nav aria-labelledby="rodape-hospedagem">
                     <h2 id="rodape-hospedagem">Hospedagem</h2>
                     <ul>
-                        <li><a href="anfitriao.html">Anuncie seu espaço</a></li>
-                        <li><a href="anfitriao.html">Anuncie sua experiência</a></li>
+                        <li><a href="anfitriao.php">Anuncie seu espaço</a></li>
+                        <li><a href="anfitriao.php">Anuncie sua experiência</a></li>
                         <li><a href="#">AirCover para anfitriões</a></li>
                         <li><a href="#">Recursos para anfitriões</a></li>
                         <li><a href="#">Hospedagem responsável</a></li>

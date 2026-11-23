@@ -18,12 +18,12 @@
     <!-- ===== CABEÇALHO ===== -->
     <header>
         <div class="container anfitriao-topo">
-            <a href="index.html" class="logo" aria-label="Clone Airbnb — página inicial">
+            <a href="index.php" class="logo" aria-label="Clone Airbnb — página inicial">
                     <img src="img/logos/logo-airbnb.png" alt="" width="100" height="32">
                 </a>
             <nav aria-label="Ações do anfitrião" style="display:flex;gap:8px">
                 <button type="button" class="icon-btn" data-acao="tema" aria-pressed="false" aria-label="Alternar tema escuro"><i class="bi bi-moon" aria-hidden="true"></i></button>
-                <a href="index.html" class="btn btn-secundario btn-pequeno">Sair</a>
+                <a href="index.php" class="btn btn-secundario btn-pequeno">Sair</a>
             </nav>
         </div>
     </header>
@@ -38,7 +38,7 @@
                     <i class="bi bi-geo-alt" aria-hidden="true"></i> <span id="resumo-endereco">Insira seu endereço</span>
                 </button>
                 <p class="alerta alerta-sucesso" id="anuncio-sucesso" role="status" hidden><i class="bi bi-check-circle" aria-hidden="true"></i><span></span></p>
-                <p class="texto-suave">Você não está anunciando um espaço? <a href="servicos.html">Anuncie uma experiência ou serviço</a></p>
+                <p class="texto-suave">Você não está anunciando um espaço? <a href="servicos.php">Anuncie uma experiência ou serviço</a></p>
             </div>
             <div class="anfitriao-ilustracao">
                 <img src="img/acomodacoes/casa-13.jpg" alt="Casa contemporânea com jardim, exemplo de espaço anunciado">
@@ -63,8 +63,8 @@
                 <nav aria-labelledby="rodape-hospedagem">
                     <h2 id="rodape-hospedagem">Hospedagem</h2>
                     <ul>
-                        <li><a href="anfitriao.html">Anuncie seu espaço</a></li>
-                        <li><a href="anfitriao.html">Anuncie sua experiência</a></li>
+                        <li><a href="anfitriao.php">Anuncie seu espaço</a></li>
+                        <li><a href="anfitriao.php">Anuncie sua experiência</a></li>
                         <li><a href="#">AirCover para anfitriões</a></li>
                         <li><a href="#">Recursos para anfitriões</a></li>
                         <li><a href="#">Hospedagem responsável</a></li>
@@ -100,7 +100,7 @@
 
     <!-- Modal "Confirme seu endereço" (formulário de cadastro do anúncio) -->
     <dialog class="modal" id="modal-endereco" aria-labelledby="titulo-endereco">
-        <form id="form-endereco" action="anfitriao.html" method="post">
+        <form id="form-endereco" action="anfitriao.php" method="post">
             <div class="modal-cabecalho">
                 <button type="button" class="icon-btn btn-fechar" data-fechar aria-label="Voltar"><i class="bi bi-arrow-left" aria-hidden="true"></i></button>
                 <h2 id="titulo-endereco">Confirme seu endereço</h2>

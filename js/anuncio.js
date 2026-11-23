@@ -1,5 +1,5 @@
 /* =========================================================================
-   anuncio.js — Página de detalhe da acomodação (anuncio.html?id=N)
+   anuncio.js — Página de detalhe da acomodação (anuncio.php?id=N)
    - Preenche a página com os dados do anúncio
    - Galeria de fotos em modal com navegação (botões, miniaturas e setas)
    - Calendário de 2 meses para escolher check-in/checkout

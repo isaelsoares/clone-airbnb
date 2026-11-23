@@ -20,15 +20,15 @@ O Airbnb é uma plataforma que conecta pessoas que querem alugar acomodações, 
 
 | Página | Arquivo | Descrição |
 |---|---|---|
-| Início | `index.html` | Carrosséis de acomodações por cidade e destinos de inspiração |
-| Acomodações | `acomodacoes.html` | Listagem com busca e filtros por categoria e preço |
-| Experiências | `experiencias.html` | Catálogo de experiências com modal de detalhes |
-| Serviços | `servicos.html` | Catálogo e tabela de preços dos serviços |
-| Anúncio | `anuncio.html` | Galeria de fotos, calendário de reserva e resumo de preço |
-| Favoritos | `favoritos.html` | Itens salvos pelo usuário |
-| Login / cadastro | `login.html` | Formulários de entrada e cadastro (área restrita) |
-| Torne-se anfitrião | `anfitriao.html` | Formulário de cadastro de acomodação (área restrita) |
-| Checkout | `checkout.html` | Confirmação e pagamento da reserva |
+| Início | `index.php` | Carrosséis de acomodações por cidade e destinos de inspiração |
+| Acomodações | `acomodacoes.php` | Listagem com busca e filtros por categoria e preço |
+| Experiências | `experiencias.php` | Catálogo de experiências com modal de detalhes |
+| Serviços | `servicos.php` | Catálogo e tabela de preços dos serviços |
+| Anúncio | `anuncio.php` | Galeria de fotos, calendário de reserva e resumo de preço |
+| Favoritos | `favoritos.php` | Itens salvos pelo usuário |
+| Login / cadastro | `login.php` | Formulários de entrada e cadastro (área restrita) |
+| Torne-se anfitrião | `anfitriao.php` | Formulário de cadastro de acomodação (área restrita) |
+| Checkout | `checkout.php` | Confirmação e pagamento da reserva |
 
 ### Funcionalidades
 
@@ -59,7 +59,7 @@ O Airbnb é uma plataforma que conecta pessoas que querem alugar acomodações, 
 ├── js/               # scripts (dados, regras de negócio, validação e um por página)
 ├── img/              # imagens das acomodações, experiências, serviços e destinos
 ├── wireframes/       # wireframes da Parte 1
-├── *.html            # páginas do site
+├── *.php             # páginas do site
 └── PROMPTS.md        # prompts de IA utilizados
 ```
 

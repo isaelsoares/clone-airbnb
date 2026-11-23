@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gravarStorage('cloneAirbnb.usuario', { nome });
         forms.forEach(f => { f.querySelectorAll('button[type="submit"]').forEach(b => { b.disabled = true; }); });
         mostrarSucesso(sucesso, mensagem + ' Redirecionando...');
-        setTimeout(() => { window.location.href = 'index.html'; }, 1800);
+        setTimeout(() => { window.location.href = 'index.php'; }, 1800);
     }
 
     /* ---------- Formulário de login ---------- */

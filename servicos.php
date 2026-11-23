@@ -19,7 +19,7 @@
     <header class="site-header">
         <div class="container">
             <div class="header-topo">
-                <a href="index.html" class="logo" aria-label="Clone Airbnb — página inicial">
+                <a href="index.php" class="logo" aria-label="Clone Airbnb — página inicial">
                     <img src="img/logos/logo-airbnb.png" alt="" width="100" height="32">
                 </a>
 
@@ -28,25 +28,25 @@
                 </button>
 
                 <nav class="abas" aria-label="Categorias">
-                    <a href="index.html" class="aba"><i class="bi bi-grid" aria-hidden="true"></i><span>Tudo</span></a>
-                    <a href="acomodacoes.html" class="aba"><i class="bi bi-house-door" aria-hidden="true"></i><span>Acomodações</span></a>
-                    <a href="experiencias.html" class="aba"><i class="bi bi-balloon" aria-hidden="true"></i><span>Experiências</span></a>
-                    <a href="servicos.html" class="aba" aria-current="page"><i class="bi bi-bell" aria-hidden="true"></i><span>Serviços</span></a>
+                    <a href="index.php" class="aba"><i class="bi bi-grid" aria-hidden="true"></i><span>Tudo</span></a>
+                    <a href="acomodacoes.php" class="aba"><i class="bi bi-house-door" aria-hidden="true"></i><span>Acomodações</span></a>
+                    <a href="experiencias.php" class="aba"><i class="bi bi-balloon" aria-hidden="true"></i><span>Experiências</span></a>
+                    <a href="servicos.php" class="aba" aria-current="page"><i class="bi bi-bell" aria-hidden="true"></i><span>Serviços</span></a>
                 </nav>
 
                 <div class="header-acoes">
-                    <a href="anfitriao.html" class="link-anfitriao">Torne-se um anfitrião</a>
+                    <a href="anfitriao.php" class="link-anfitriao">Torne-se um anfitrião</a>
                     <button type="button" class="icon-btn" data-acao="tema" aria-pressed="false" aria-label="Alternar tema escuro"><i class="bi bi-moon" aria-hidden="true"></i></button>
                     <div class="menu-usuario">
                         <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-usuario" aria-label="Abrir menu">
                             <i class="bi bi-list" aria-hidden="true"></i><i class="bi bi-person-circle" aria-hidden="true"></i>
                         </button>
                         <nav class="menu-dropdown" id="menu-usuario" aria-label="Menu do usuário" hidden>
-                            <a href="login.html" data-menu="entrar"><strong>Entrar</strong></a>
-                            <a href="login.html#cadastro" data-menu="cadastrar">Cadastrar-se</a>
+                            <a href="login.php" data-menu="entrar"><strong>Entrar</strong></a>
+                            <a href="login.php#cadastro" data-menu="cadastrar">Cadastrar-se</a>
                             <div class="separador" role="separator"></div>
-                            <a href="favoritos.html">Favoritos <span class="contador contador-favoritos"></span></a>
-                            <a href="anfitriao.html">Torne-se um anfitrião</a>
+                            <a href="favoritos.php">Favoritos <span class="contador contador-favoritos"></span></a>
+                            <a href="anfitriao.php">Torne-se um anfitrião</a>
                             <a href="#rodape">Central de Ajuda</a>
                         </nav>
                     </div>
@@ -54,7 +54,7 @@
             </div>
 
             <!-- Formulário de busca (GET): envia para a listagem de acomodações -->
-            <form class="busca" id="form-busca" action="servicos.html" method="get" role="search" aria-label="Buscar serviços">
+            <form class="busca" id="form-busca" action="servicos.php" method="get" role="search" aria-label="Buscar serviços">
                 <div class="busca-campo">
                     <label for="busca-onde">Onde</label>
                     <input type="search" id="busca-onde" name="onde" placeholder="Buscar destinos" autocomplete="off">
@@ -135,8 +135,8 @@
                 <nav aria-labelledby="rodape-hospedagem">
                     <h2 id="rodape-hospedagem">Hospedagem</h2>
                     <ul>
-                        <li><a href="anfitriao.html">Anuncie seu espaço</a></li>
-                        <li><a href="anfitriao.html">Anuncie sua experiência</a></li>
+                        <li><a href="anfitriao.php">Anuncie seu espaço</a></li>
+                        <li><a href="anfitriao.php">Anuncie sua experiência</a></li>
                         <li><a href="#">AirCover para anfitriões</a></li>
                         <li><a href="#">Recursos para anfitriões</a></li>
                         <li><a href="#">Hospedagem responsável</a></li>

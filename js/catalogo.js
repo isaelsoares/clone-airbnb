@@ -23,18 +23,18 @@ function renderInicio() {
     const titulos = ['Acomodações perto da praia · %', 'Acomodações muito procuradas em %', 'Fique em %', 'Lugares para ficar em %'];
     let html = Object.entries(porCidade).map(([cidade, itens], i) =>
         secaoCarrossel(titulos[i % titulos.length].replace('%', cidade), itens.map(cardAcomodacao).join(''),
-            { link: `acomodacoes.html?onde=${encodeURIComponent(cidade)}` })
+            { link: `acomodacoes.php?onde=${encodeURIComponent(cidade)}` })
     ).join('');
 
     const hoteis = ACOMODACOES.filter(a => a.categorias.includes('hotel'));
     html += secaoCarrossel('Ótimos hotéis para sua próxima viagem', hoteis.map(cardAcomodacao).join(''),
-        { subtitulo: 'Além disso, ganhe créditos ao ficar em um hotel em destaque.', link: 'acomodacoes.html?categoria=hotel' });
+        { subtitulo: 'Além disso, ganhe créditos ao ficar em um hotel em destaque.', link: 'acomodacoes.php?categoria=hotel' });
     document.getElementById('secoes-dinamicas').innerHTML = html;
 
-    renderTilesServicos(categoria => `servicos.html?categoria=${encodeURIComponent(categoria)}`);
+    renderTilesServicos(categoria => `servicos.php?categoria=${encodeURIComponent(categoria)}`);
 
     document.getElementById('lista-destinos').innerHTML = DESTINOS.map(d => `
-        <a class="destino" href="acomodacoes.html?onde=${encodeURIComponent(d.nome)}">
+        <a class="destino" href="acomodacoes.php?onde=${encodeURIComponent(d.nome)}">
             <img src="img/${d.imagem}" alt="${d.alt}" loading="lazy" width="300" height="225">
             <h3>${d.nome}</h3>
             <p>${d.desc}</p>
@@ -42,7 +42,7 @@ function renderInicio() {
 
     document.getElementById('secao-experiencias').innerHTML = secaoCarrossel(
         'Capture momentos inesquecíveis perto de você',
-        EXPERIENCIAS.map(e => cardItem(e, 'experiencia')).join(''), { link: 'experiencias.html' });
+        EXPERIENCIAS.map(e => cardItem(e, 'experiencia')).join(''), { link: 'experiencias.php' });
 }
 
 /* Tiles das categorias de serviço (sem repetir categoria) */
@@ -131,7 +131,7 @@ function renderAcomodacoes() {
         saidaPreco.textContent = formatarMoeda(estado.precoMax);
         const busca = document.getElementById('form-busca');
         if (busca) busca.reset();
-        history.replaceState(null, '', 'acomodacoes.html');
+        history.replaceState(null, '', 'acomodacoes.php');
         marcarChip();
         setTimeout(aplicar); // espera o reset nativo terminar
     });
@@ -169,7 +169,7 @@ function renderServicos() {
     const termo = normalizar(parametros.get('onde') || '');
 
     // os tiles funcionam como filtro de categoria (clicar de novo remove o filtro)
-    renderTilesServicos(cat => `servicos.html?categoria=${encodeURIComponent(cat)}`);
+    renderTilesServicos(cat => `servicos.php?categoria=${encodeURIComponent(cat)}`);
     const tiles = [...document.querySelectorAll('[data-categoria-servico]')];
 
     function aplicar() {
@@ -205,7 +205,7 @@ function renderServicos() {
     tiles.forEach(tile => tile.addEventListener('click', evento => {
         evento.preventDefault();
         categoria = categoria === tile.dataset.categoriaServico ? '' : tile.dataset.categoriaServico;
-        history.replaceState(null, '', categoria ? `servicos.html?categoria=${encodeURIComponent(categoria)}` : 'servicos.html');
+        history.replaceState(null, '', categoria ? `servicos.php?categoria=${encodeURIComponent(categoria)}` : 'servicos.php');
         aplicar();
     }));
     aplicar();
@@ -229,7 +229,7 @@ function renderFavoritos() {
         alvo.innerHTML = cards.length ? cards.join('') : `
             <div class="vazio" style="grid-column:1/-1"><i class="bi bi-heart" aria-hidden="true"></i>
             Você ainda não salvou nada. Toque no coração de um anúncio para guardá-lo aqui.<br><br>
-            <a href="index.html" class="btn btn-escuro">Começar a explorar</a></div>`;
+            <a href="index.php" class="btn btn-escuro">Começar a explorar</a></div>`;
         document.getElementById('limpar-favoritos').hidden = !cards.length;
     }
 

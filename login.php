@@ -19,22 +19,22 @@
     <header class="site-header">
         <div class="container">
             <div class="header-topo">
-                <a href="index.html" class="logo" aria-label="Clone Airbnb — página inicial">
+                <a href="index.php" class="logo" aria-label="Clone Airbnb — página inicial">
                     <img src="img/logos/logo-airbnb.png" alt="" width="100" height="32">
                 </a>
                 <div class="header-acoes">
-                    <a href="anfitriao.html" class="link-anfitriao">Torne-se um anfitrião</a>
+                    <a href="anfitriao.php" class="link-anfitriao">Torne-se um anfitrião</a>
                     <button type="button" class="icon-btn" data-acao="tema" aria-pressed="false" aria-label="Alternar tema escuro"><i class="bi bi-moon" aria-hidden="true"></i></button>
                     <div class="menu-usuario">
                         <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-usuario" aria-label="Abrir menu">
                             <i class="bi bi-list" aria-hidden="true"></i><i class="bi bi-person-circle" aria-hidden="true"></i>
                         </button>
                         <nav class="menu-dropdown" id="menu-usuario" aria-label="Menu do usuário" hidden>
-                            <a href="login.html" data-menu="entrar"><strong>Entrar</strong></a>
-                            <a href="login.html#cadastro" data-menu="cadastrar">Cadastrar-se</a>
+                            <a href="login.php" data-menu="entrar"><strong>Entrar</strong></a>
+                            <a href="login.php#cadastro" data-menu="cadastrar">Cadastrar-se</a>
                             <div class="separador" role="separator"></div>
-                            <a href="favoritos.html">Favoritos <span class="contador contador-favoritos"></span></a>
-                            <a href="anfitriao.html">Torne-se um anfitrião</a>
+                            <a href="favoritos.php">Favoritos <span class="contador contador-favoritos"></span></a>
+                            <a href="anfitriao.php">Torne-se um anfitrião</a>
                             <a href="#rodape">Central de Ajuda</a>
                         </nav>
                     </div>
@@ -66,7 +66,7 @@
             <p class="alerta alerta-sucesso" id="login-sucesso" role="status" hidden><i class="bi bi-check-circle" aria-hidden="true"></i><span></span></p>
 
             <!-- Formulário 1: login -->
-            <form class="form-pilha" id="form-login" role="tabpanel" aria-labelledby="aba-entrar" action="index.html" method="post">
+            <form class="form-pilha" id="form-login" role="tabpanel" aria-labelledby="aba-entrar" action="index.php" method="post">
                 <p class="alerta alerta-erro" data-resumo hidden><i class="bi bi-exclamation-circle" aria-hidden="true"></i><span></span></p>
                 <div class="campo">
                     <label for="login-email">E-mail</label>
@@ -87,7 +87,7 @@
             </form>
 
             <!-- Formulário 2: cadastro -->
-            <form class="form-pilha" id="form-cadastro" role="tabpanel" aria-labelledby="aba-cadastro" action="index.html" method="post" hidden>
+            <form class="form-pilha" id="form-cadastro" role="tabpanel" aria-labelledby="aba-cadastro" action="index.php" method="post" hidden>
                 <p class="alerta alerta-erro" data-resumo hidden><i class="bi bi-exclamation-circle" aria-hidden="true"></i><span></span></p>
                 <div class="campo">
                     <label for="cad-nome">Nome completo</label>
@@ -156,8 +156,8 @@
                 <nav aria-labelledby="rodape-hospedagem">
                     <h2 id="rodape-hospedagem">Hospedagem</h2>
                     <ul>
-                        <li><a href="anfitriao.html">Anuncie seu espaço</a></li>
-                        <li><a href="anfitriao.html">Anuncie sua experiência</a></li>
+                        <li><a href="anfitriao.php">Anuncie seu espaço</a></li>
+                        <li><a href="anfitriao.php">Anuncie sua experiência</a></li>
                         <li><a href="#">AirCover para anfitriões</a></li>
                         <li><a href="#">Recursos para anfitriões</a></li>
                         <li><a href="#">Hospedagem responsável</a></li>
