@@ -33,7 +33,7 @@ require '../includes/cabecalho.php';
                 </article>
                 <article class="painel-card">
                     <i class="bi bi-people" aria-hidden="true"></i>
-                    <h3>Usuários</h3>
+                    <h3><a href="usuarios.php">Usuários</a></h3>
                     <p class="painel-numero"><?= $resumo['usuarios'] ?></p>
                 </article>
                 <article class="painel-card">

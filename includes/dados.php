@@ -93,6 +93,15 @@ function buscarUsuarioPorEmail(string $email): ?array
     return $stmt->fetch() ?: null;
 }
 
+/* Usuários para o painel (sem a senha), mais recentes primeiro */
+function listarUsuarios(): array
+{
+    $stmt = conectar()->prepare('SELECT id, nome, email, telefone, nascimento, criado_em
+                                 FROM usuarios ORDER BY criado_em DESC, id DESC');
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
 /* Grava o usuário com a senha protegida por password_hash; devolve o id */
 function cadastrarUsuario(array $u, string $senha): int
 {

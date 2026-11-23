@@ -34,6 +34,7 @@ $abasAdmin = [
     'painel' => ['index.php', 'bi-speedometer2', 'Painel'],
     'acomodacoes' => ['acomodacoes.php', 'bi-house-door', 'Acomodações'],
     'reservas' => ['reservas.php', 'bi-calendar-check', 'Reservas'],
+    'usuarios' => ['usuarios.php', 'bi-people', 'Usuários'],
 ];
 $admin = adminLogado();
 ?>
