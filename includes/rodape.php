@@ -61,7 +61,7 @@ $scripts = $scripts ?? [];
                 </nav>
             </div>
             <div class="rodape-base">
-                <p>© <?= date('Y') ?> Clone Airbnb · Privacidade · Termos</p>
+                <p>© <?= date('Y') ?> Clone Airbnb · Privacidade · Termos · <a href="<?= $base ?>admin/login.php">Área administrativa</a></p>
                 <div class="redes">
                     <span><i class="bi bi-globe" aria-hidden="true"></i> Português (BR)</span>
                     <span>R$ BRL</span>
