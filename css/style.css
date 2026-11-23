@@ -933,6 +933,20 @@ button.chip:hover { border-color: var(--cor-texto); }
 .painel-card i { font-size: 1.5rem; color: var(--cor-primaria); }
 .painel-card h3 { font-size: var(--tam-pequeno); font-weight: 500; color: var(--cor-texto-suave); }
 .painel-numero { font-size: 1.75rem; font-weight: 600; }
+.painel-card a { text-decoration: none; }
+.painel-card a:hover { text-decoration: underline; }
+.painel-topo { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+.painel-busca { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; }
+.painel-busca .campo { flex: 1 1 260px; }
+.tabela-painel td, .tabela-painel th { vertical-align: middle; }
+.tabela-painel th[scope="row"] { font-weight: 500; }
+.tabela-painel th[scope="row"] span { display: block; font-size: var(--tam-mini); font-weight: 400; }
+.tabela-painel img { width: 64px; height: 48px; object-fit: cover; border-radius: var(--raio-p); }
+.acoes-tabela { display: flex; gap: 6px; }
+.acoes-tabela form { display: contents; }
+.btn-perigo { color: var(--cor-erro); }
+.btn-perigo:hover { background: var(--cor-erro-fundo); }
+.painel-modal-acoes { display: flex; justify-content: flex-end; gap: 8px; }
 
 /* 10. RESPONSIVIDADE ---------------------------------------------------- */
 

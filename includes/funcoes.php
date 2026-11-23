@@ -91,6 +91,25 @@ function adminLogado(): ?array
     return $_SESSION['admin'] ?? null;
 }
 
+/* Token que acompanha os formulários POST do painel (proteção contra CSRF) */
+function tokenCsrf(): string
+{
+    if (empty($_SESSION['csrf'])) {
+        $_SESSION['csrf'] = bin2hex(random_bytes(16));
+    }
+    return $_SESSION['csrf'];
+}
+
+function campoCsrf(): string
+{
+    return '<input type="hidden" name="csrf" value="' . tokenCsrf() . '">';
+}
+
+function csrfValido(): bool
+{
+    return hash_equals(tokenCsrf(), textoPost('csrf'));
+}
+
 /* ---------- Entrada de dados (sanitização) ---------- */
 
 /* Lê um texto enviado por POST, sem espaços nas pontas */

@@ -131,6 +131,38 @@ function registrarReserva(array $r): int
     return (int) $pdo->lastInsertId();
 }
 
+/* ---------- Painel: acomodações ---------- */
+
+/* Lista para o painel, com o total de reservas; filtra por título ou cidade */
+function listarAcomodacoesPainel(string $busca = ''): array
+{
+    $sql = 'SELECT a.id, a.titulo, a.tipo, a.cidade, a.estado, a.diaria, a.capacidade, a.min_noites, a.imagens,
+                   COUNT(r.id) AS reservas
+            FROM acomodacoes a
+            LEFT JOIN reservas r ON r.acomodacao_id = a.id
+            WHERE a.titulo LIKE :busca1 OR a.cidade LIKE :busca2
+            GROUP BY a.id
+            ORDER BY a.id DESC';
+    $stmt = conectar()->prepare($sql);
+    $termo = '%' . $busca . '%';
+    $stmt->execute([':busca1' => $termo, ':busca2' => $termo]);
+    return $stmt->fetchAll();
+}
+
+function contarReservasDaAcomodacao(int $id): int
+{
+    $stmt = conectar()->prepare('SELECT COUNT(*) FROM reservas WHERE acomodacao_id = :id');
+    $stmt->execute([':id' => $id]);
+    return (int) $stmt->fetchColumn();
+}
+
+function excluirAcomodacao(int $id): bool
+{
+    $stmt = conectar()->prepare('DELETE FROM acomodacoes WHERE id = :id');
+    $stmt->execute([':id' => $id]);
+    return $stmt->rowCount() > 0;
+}
+
 /* Gera o JSON das acomodações para o JavaScript (seguro dentro de <script>) */
 function acomodacoesParaJs(array $acomodacoes): string
 {

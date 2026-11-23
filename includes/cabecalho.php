@@ -32,6 +32,7 @@ $abas = [
 /* Menu do painel administrativo (links relativos à pasta admin/) */
 $abasAdmin = [
     'painel' => ['index.php', 'bi-speedometer2', 'Painel'],
+    'acomodacoes' => ['acomodacoes.php', 'bi-house-door', 'Acomodações'],
 ];
 $admin = adminLogado();
 ?>

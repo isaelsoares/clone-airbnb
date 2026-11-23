@@ -23,7 +23,7 @@ require '../includes/cabecalho.php';
             <div class="painel-cards">
                 <article class="painel-card">
                     <i class="bi bi-house-door" aria-hidden="true"></i>
-                    <h3>Acomodações</h3>
+                    <h3><a href="acomodacoes.php">Acomodações</a></h3>
                     <p class="painel-numero"><?= $resumo['acomodacoes'] ?></p>
                 </article>
                 <article class="painel-card">
