@@ -25,7 +25,6 @@ $usuario = usuarioLogado();
 $abas = [
     'inicio' => ['index.php', 'bi-grid', 'Tudo'],
     'acomodacoes' => ['acomodacoes.php', 'bi-house-door', 'Acomodações'],
-    'reservas' => ['reservas.php', 'bi-calendar-check', 'Reservas'],
     'experiencias' => ['experiencias.php', 'bi-balloon', 'Experiências'],
     'servicos' => ['servicos.php', 'bi-bell', 'Serviços'],
 ];
@@ -34,6 +33,7 @@ $abas = [
 $abasAdmin = [
     'painel' => ['index.php', 'bi-speedometer2', 'Painel'],
     'acomodacoes' => ['acomodacoes.php', 'bi-house-door', 'Acomodações'],
+    'reservas' => ['reservas.php', 'bi-calendar-check', 'Reservas'],
 ];
 $admin = adminLogado();
 ?>
