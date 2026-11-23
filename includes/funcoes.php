@@ -374,6 +374,12 @@ function validarAcomodacao(array $v): array
     return $erros;
 }
 
+/* Mostra só os 2 últimos dígitos do CPF: "***.***.***-25" */
+function cpfMascarado(string $cpf): string
+{
+    return '***.***.***-' . substr(somenteDigitos($cpf), -2);
+}
+
 /* Código exibido ao hóspede: 15 -> "HM000015" */
 function codigoReserva(int $id): string
 {

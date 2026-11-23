@@ -941,6 +941,7 @@ button.chip:hover { border-color: var(--cor-texto); }
 .tabela-painel td, .tabela-painel th { vertical-align: middle; }
 .tabela-painel th[scope="row"] { font-weight: 500; }
 .tabela-painel th[scope="row"] span { display: block; font-size: var(--tam-mini); font-weight: 400; }
+.tabela-painel .linha-extra { display: block; font-size: var(--tam-mini); }
 .tabela-painel img { width: 64px; height: 48px; object-fit: cover; border-radius: var(--raio-p); }
 .acoes-tabela { display: flex; gap: 6px; }
 .acoes-tabela form { display: contents; }

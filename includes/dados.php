@@ -207,6 +207,17 @@ function excluirAcomodacao(int $id): bool
     return $stmt->rowCount() > 0;
 }
 
+/* Reservas mais recentes primeiro, com o título da acomodação */
+function listarReservas(): array
+{
+    $stmt = conectar()->prepare('SELECT r.*, a.titulo
+                                 FROM reservas r
+                                 JOIN acomodacoes a ON a.id = r.acomodacao_id
+                                 ORDER BY r.criado_em DESC, r.id DESC');
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
 /* Gera o JSON das acomodações para o JavaScript (seguro dentro de <script>) */
 function acomodacoesParaJs(array $acomodacoes): string
 {

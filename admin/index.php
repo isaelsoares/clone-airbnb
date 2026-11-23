@@ -28,7 +28,7 @@ require '../includes/cabecalho.php';
                 </article>
                 <article class="painel-card">
                     <i class="bi bi-calendar-check" aria-hidden="true"></i>
-                    <h3>Reservas</h3>
+                    <h3><a href="reservas.php">Reservas</a></h3>
                     <p class="painel-numero"><?= $resumo['reservas'] ?></p>
                 </article>
                 <article class="painel-card">
